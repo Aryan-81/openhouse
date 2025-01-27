@@ -1,0 +1,26 @@
+requirements
+
+frontend
+    resposive (imp)
+    data fetch from server (every text)
+    context mangement
+    gallery 
+    map (with event location with live)    
+
+backend:
+    admin login (for live update)
+    head events login (for heads)
+    school login / signup(for school wise registeration)
+    event template
+    data base (sqlite)
+    database backup
+    smtp
+
+
+nextjs - frontend
+djnago -backend    -- express
+sqlite - database  -- mongo db 
+
+
+
+
