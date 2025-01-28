@@ -1,0 +1,237 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+/* Shared Container Style (For Admin, Leader, and School Login) */
+.container {
+  width: 50vw;
+  height: 70vh;
+  background-color: rgb(192, 208, 235);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2rem;
+}
+
+/* Shared Logo Section */
+.logo-section {
+  width: 50vw;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.logo-section img {
+  width: 100px;
+  height: 100px;
+}
+
+.logo-section h1 {
+  color: white;
+  font-size: 4rem;
+  margin-left: 10px;
+}
+
+/* Shared Login Box Section */
+.login-box {
+  width: 50vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.login-box h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+.forgot-password a {
+  color: #0073e6;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Specific Styles for Login Page */
+.login-container {
+  width: 50vw;
+  height: 70vh;
+  background-color: rgb(192, 208, 235);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2rem;
+}
+
+.links-section {
+  width: 50vw;
+  margin-top: 20px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.links-section a {
+  display: block;
+  text-align: center;
+  padding: 15px 30px;
+  margin: 10px 0;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.links-section a:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Media Queries for Responsiveness */
+
+/* For devices smaller than 768px (tablets and small screens) */
+@media (max-width: 768px) {
+  .container, .login-container {
+    width: 80vw;
+    height: 80vh;
+  }
+
+  .logo-section {
+    width: 80vw;
+    height: 80px;
+  }
+
+  .logo-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .login-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .input-group input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .links-section {
+    width: 80vw;
+    margin-top: 20px;
+  }
+
+  .links-section a {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+}
+
+/* For devices smaller than 480px (mobiles) */
+@media (max-width: 480px) {
+  .container, .login-container {
+    width: 90vw;
+    height: auto;
+    padding-bottom: 20px; /* Added padding from bottom */
+  }
+
+  .logo-section {
+    width: 90vw;
+    height: 80px;
+  }
+
+  .logo-section img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-section h1 {
+    font-size: 2rem;
+  }
+
+  .login-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .input-group input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .links-section {
+    width: 90vw;
+    margin-top: 20px;
+  }
+
+  .links-section a {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+}
