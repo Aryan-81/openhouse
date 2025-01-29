@@ -111,7 +111,7 @@ const Footer = () => {
                                             <br />
                                             NH-44 ,Jammu - 181 221,
                                             <br />
-                                            Karnataka, India.
+                                            J&K, India.
                                         </span>
                                     </li>
                                     <li>
