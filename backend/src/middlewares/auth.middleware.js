@@ -1,4 +1,4 @@
-// import { Admin } from "../models/admin.model.js"; // Yet to create this model
+import { Admin } from "../models/admin.model.js"; // Yet to create this model
 import { School } from "../models/school.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
