@@ -4,7 +4,6 @@ import { ApiResponse } from "../utils/apiResponse.js";
 import { School } from '../models/school.model.js';
 import { emailService } from '../utils/nodemailer.js';
 import { OTPVerification } from "../models/OTPVerification.model.js";
-import { School } from "../models/school.model.js"
 
 // options for cookies
 const cookieOptions = {
@@ -14,6 +13,10 @@ const cookieOptions = {
 
 const generateOTP = async (email) => {
     const OTP = Math.floor(100000 + Math.random() * 900000);
+
+    const existingRequest = await OTPVerification.findOne({ email });
+
+    if(existingRequest) existingRequest.deleteOne();
 
     await OTPVerification.create({
         email,
@@ -42,11 +45,11 @@ const generateAccessAndRefreshToken = async (schoolID) => {
 };
 
 const initiateRegistration = asyncHandler(async (req, res) => {
-    const { name, address, email, password, noOfStudents } = req.body;
+    const { name, email, password, address, contactPerson, noOfStudents } = req.body;
 
     // Checks for the incoming data
 
-    if(!name || !address || !email || !password || !noOfStudents) {
+    if(!name || !address || !email || !password || !noOfStudents || !contactPerson) {
         throw new ApiError(404, 'All fields are required');
     }
 
@@ -88,7 +91,7 @@ const initiateRegistration = asyncHandler(async (req, res) => {
 });
 
 const verifyOTPAndRegister = asyncHandler(async (req, res) => {
-    const { name, address, email, password, noOfStudents, OTP } = req.body;
+    const { name, email, password, address, contactPerson, noOfStudents, OTP } = req.body;
 
     // Checks for the incoming data (checking again just to avoid errors)
 
@@ -123,7 +126,7 @@ const verifyOTPAndRegister = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Invalid OTP");
     }
 
-    storedOTPVerificationInstance.deleteOne();
+    await storedOTPVerificationInstance.deleteOne();
 
     // Now Register the School
 
@@ -132,6 +135,7 @@ const verifyOTPAndRegister = asyncHandler(async (req, res) => {
         email,
         password,
         address,
+        contactPerson,
         noOfStudents
     });
 
@@ -180,7 +184,7 @@ const login = asyncHandler(async(req, res) => {
 
     const { accessToken, refreshToken } =  await generateAccessAndRefreshToken(school._id);
 
-    const loggedInSchool = await School.findById(user._id).select("-password");
+    const loggedInSchool = await School.findById(school._id).select("-password");
 
     return res
     .status(200)

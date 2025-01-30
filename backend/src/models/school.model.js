@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const schoolSchema = new Schema(
@@ -21,10 +21,43 @@ const schoolSchema = new Schema(
             type: String,
             required: true,
         },
+        contactPerson: {
+            name: {
+                type: String,
+                required: true
+            },
+            designation: {
+                type: String,
+                required: true
+            },
+            email: {
+                type: String,
+                required: true,
+                unique: true
+            },
+            phone: {
+                type: String,
+                required: true,
+                unique: true
+            }
+        },
         noOfStudents: {
             type: Number,
             required: true,
         },
+        participatingEvents: [{
+            event: {
+                type: Schema.Types.ObjectId,
+                ref: 'Event',
+            },
+            participants: [
+                {
+                    name: String,
+                    grade: String,
+                    age: Number,
+                }
+            ]
+        }],
         refreshToken: {
             type: String,
             select: false
