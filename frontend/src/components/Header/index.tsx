@@ -50,7 +50,7 @@ const Header = () => {
             </li>
             <li className="nav-item cta">
               <Link href="/register?event_id=1" className="nav-link">
-                <span>Register</span>
+                <span>Login</span>
               </Link>
             </li>
           </ul>

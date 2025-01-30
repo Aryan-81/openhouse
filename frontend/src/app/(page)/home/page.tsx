@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/Ser";
+import EventsPostersSection from "@/components/EventPoster";
 
 const eventTypes = [
     { type_id: 1, type_title: 'Art Exhibition' },
@@ -14,6 +16,8 @@ export default function Home() {
         <>
             <Header/>
             <HeroSection eventTypes={eventTypes}/>
+            <ServicesSection/>
+            {/* <EventsPostersSection/> */}
             <Footer/>
         </>
     );
