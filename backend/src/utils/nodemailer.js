@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer"
 import { google } from "googleapis"
-import { ApiError } from "./apiError.js";
 
 
 const clientId = process.env.CLIENT_ID;
@@ -32,7 +31,7 @@ class EmailService {
                 }
             });
         } catch (error) {
-            throw new ApiError(500, 'Error while creating email transporter');
+            throw new Error('Error while creating email transporter');
         }
     };
 
@@ -51,7 +50,7 @@ class EmailService {
 
             console.log("Email sent successfully!! Message ID:", result.messageId);
         } catch (error) {
-            throw new ApiError(500, 'Error while sending email');
+            throw new Error('Error while sending email');
         }
     };
 

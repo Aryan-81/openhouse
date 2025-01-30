@@ -21,8 +21,12 @@ app.use(cookieParser());
 // Routes
 
 import schoolRouter from "./routes/school.routes.js";
+import eventRouter from "./routes/event.routes.js";
+import adminRouter from "./routes/admin.routes.js";
 
 app.use('/api/school', schoolRouter);
+app.use('/api/event', eventRouter);
+app.use('/api/admin', adminRouter);
 
 
 export { app };

@@ -1,6 +1,4 @@
 import { asyncHandler } from '../utils/asyncHandler.js';
-import { ApiError } from "../utils/apiError.js";
-import { ApiResponse } from "../utils/apiResponse.js";
 import { School } from '../models/school.model.js';
 import { emailService } from '../utils/nodemailer.js';
 import { OTPVerification } from "../models/OTPVerification.model.js";
@@ -40,7 +38,7 @@ const generateAccessAndRefreshToken = async (schoolID) => {
 
         return { accessToken, refreshToken };
     } catch (error) {
-        throw new ApiError(500, "Error while generating access and refresh token");
+        return res.status(500).json({ message: 'Error while generating access and refresh tokens' });
     }
 };
 
@@ -50,7 +48,7 @@ const initiateRegistration = asyncHandler(async (req, res) => {
     // Checks for the incoming data
 
     if(!name || !address || !email || !password || !noOfStudents || !contactPerson) {
-        throw new ApiError(404, 'All fields are required');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     if(
@@ -58,17 +56,17 @@ const initiateRegistration = asyncHandler(async (req, res) => {
             field.trim() === "";
         })
     ) {
-        throw new ApiError(404, 'All fields are required');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     if(!email.includes('@')) {
-        throw new ApiError(400, 'Email is invalid');
+        return res.status(400).json({ message: 'Email is invalid' });
     }
 
     const existingSchool = await School.findOne({ email });
 
     if(existingSchool) {
-        throw new ApiError(400, 'School already exists');
+        return res.status(400).jso({ message: 'School already exists' });
     }
 
     // Send OTP for verification
@@ -83,11 +81,7 @@ const initiateRegistration = asyncHandler(async (req, res) => {
         console.log('Failer to send OTP E:', error);
     }
 
-    return res
-    .status(200)
-    .json(
-        new ApiResponse(200, {}, 'OTP sent successfully')
-    )
+    return res.status(200).json({ message: 'OTP sent successfully' });
 });
 
 const verifyOTPAndRegister = asyncHandler(async (req, res) => {
@@ -96,7 +90,7 @@ const verifyOTPAndRegister = asyncHandler(async (req, res) => {
     // Checks for the incoming data (checking again just to avoid errors)
 
     if(!name || !address || !email || !password || !noOfStudents) {
-        throw new ApiError(404, 'All fields are required');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     if(
@@ -104,26 +98,26 @@ const verifyOTPAndRegister = asyncHandler(async (req, res) => {
             field.trim() === "";
         })
     ) {
-        throw new ApiError(404, 'All fields are required');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     if(!email.includes('@')) {
-        throw new ApiError(400, 'Email is invalid');
+        return res.status(400).json({ message: 'Email is invalid' });
     }
 
     // Verifying OTP
     const storedOTPVerificationInstance = await OTPVerification.findOne({ email });
 
     if(!storedOTPVerificationInstance) {
-        throw new ApiError(400, 'OTP has not been requested or already verified');
+        return res.status(400).json({ message: 'OTP has not been requested or already verified' });
     }
 
     if(storedOTPVerificationInstance.expiresAt < Date.now()) {
-        throw new ApiError(400, 'OTP is expired');
+        return res.status(400).json({ message: 'OTP is expired' });
     }
 
     if(!await storedOTPVerificationInstance.verifyOTP(OTP)) {
-        throw new ApiError(400, "Invalid OTP");
+        return res.status(400).json({ message: 'Invalid OTP' });
     }
 
     await storedOTPVerificationInstance.deleteOne();
@@ -140,46 +134,36 @@ const verifyOTPAndRegister = asyncHandler(async (req, res) => {
     });
 
     if(!school) {
-        throw new ApiError(500, 'Error occured while registering the School');
+        return res.status(500).json({ message: 'Error occured while registering the School' });
     }
 
     const { accessToken, refreshToken } = await generateAccessAndRefreshToken(school._id);
 
     school.refreshToken = refreshToken;
-    school.save({ validateBeforeSave: false });
+    await school.save({ validateBeforeSave: false });
 
     return res
     .status(200)
     .cookie('accessToken', accessToken, cookieOptions)
     .cookie('refreshToken', refreshToken, cookieOptions)
-    .json(
-        new ApiResponse(
-            200,
-            {
-                school,
-                accessToken,
-                refreshToken
-            },
-            'School registered successfully'
-        )
-    );
+    .json({ message: 'School registered successfully', school, accessToken, refreshToken });
 });
 
 const login = asyncHandler(async(req, res) => {
     const { email, password } = req.body;
 
     if(!email || email.trim() === "" || !password || password.trim() === "") {
-        throw new ApiError(404, 'All fields are required');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     const school = await School.findOne({ email });
 
     if(!school) {
-        throw new ApiError(404, 'School not found');
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     if(!await school.comparePassword(password)) {
-        throw new ApiError(401, "Password is invalid");
+        return res.status(401).json({ message: 'Password is invalid' });
     }
 
     const { accessToken, refreshToken } =  await generateAccessAndRefreshToken(school._id);
@@ -190,24 +174,19 @@ const login = asyncHandler(async(req, res) => {
     .status(200)
     .cookie("accessToken", accessToken, cookieOptions)
     .cookie("refreshToken", refreshToken, cookieOptions)
-    .json(
-        new ApiResponse(
-            200,
-            {
-                school: loggedInSchool,
-                accessToken,
-                refreshToken
-            },
-            "Logged in successfully"
-        )
-    );
+    .json({
+        message: 'Logged in successfully',
+        loggedInSchool,
+        accessToken,
+        refreshToken
+    });
 });
 
 const resendOTP = asyncHandler(async (req, res) => {
     const { email } = req.body;
 
     if(!email || email.trim() === "") {
-        throw new ApiError(404, "All fields are required");
+        return res.status(404).json({ message: 'All fields are required' });
     }
 
     const existingRequest = await OTPVerification.findOne({ usersEmail: email });
@@ -224,9 +203,7 @@ const resendOTP = asyncHandler(async (req, res) => {
 
     return res
     .status(200)
-    .json(
-        new ApiResponse(200, {}, "OTP resent successfully")
-    )
+    .json({ message: 'OTP resent successfully' });
 });
 
 const logout = asyncHandler(async (req, res) => {
@@ -243,9 +220,7 @@ const logout = asyncHandler(async (req, res) => {
     .status(200)
     .clearCookie("accessToken", cookieOptions)
     .clearCookie("refreshToken", cookieOptions)
-    .json(
-        new ApiResponse(200, {}, "Logged out Successfully")
-    )
+    .json({ message: 'Logged out successfully' });
 });
 
 export {

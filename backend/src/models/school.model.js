@@ -45,19 +45,19 @@ const schoolSchema = new Schema(
             type: Number,
             required: true,
         },
-        participatingEvents: [{
-            event: {
-                type: Schema.Types.ObjectId,
-                ref: 'Event',
-            },
-            participants: [
-                {
-                    name: String,
-                    grade: String,
-                    age: Number,
-                }
-            ]
-        }],
+        // participatingEvents: [{
+        //     event: {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Event',
+        //     },
+        //     participants: [
+        //         {
+        //             name: String,
+        //             grade: String,
+        //             age: Number,
+        //         }
+        //     ]
+        // }],
         refreshToken: {
             type: String,
             select: false
