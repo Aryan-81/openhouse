@@ -1,51 +1,41 @@
 "use client";
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useState } from "react";
+import styles from "./Header.module.css"; // Import CSS Module
 
-const Header = () => {
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+const Header: React.FC = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  // Dynamically load Bootstrap CSS
-  useEffect(() => {
-    import('bootstrap/dist/css/bootstrap.min.css');
-  }, []);
-
-  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+  const toggleNav = () => {
+    setIsNavOpen((prev) => !prev);
+  };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style={{top:0,zIndex:101}}> 
-      <div className="container">
-        <Link href="/" className="navbar-brand">
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <Link href="/" className={styles.brand}>
           PRAGYAAN
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded={!isNavCollapsed}
-          aria-label="Toggle navigation"
-          onClick={handleNavCollapse}
-        >
-          <span className="oi oi-menu"></span> Menu
+
+        <button className={styles.menuButton} onClick={toggleNav} aria-label="Toggle navigation">
+          ☰
         </button>
 
-        <div className={`collapse navbar-collapse ${!isNavCollapsed ? 'show' : ''}`} id="ftco-nav" style={{flexGrow:'0'}}>
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
-              <Link href="/" className="nav-link">
+        <div className={`${styles.navLinks} ${isNavOpen ? styles.show : ""}`}>
+          <ul>
+            <li>
+              <Link href="/" className={styles.navItem}>
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <a href="#events" className="nav-link">
-                events
-              </a>
+            <li>
+              <Link href="/event" className={styles.navItem}>
+                Events
+              </Link>
             </li>
-            <li className="nav-item">
-              <a href="#about" className="nav-link">
-                about
+            <li>
+              <a href="#about" className={styles.navItem}>
+                About
               </a>
             </li>
             <li className="nav-item cta">

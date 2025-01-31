@@ -1,11 +1,10 @@
 import nodemailer from "nodemailer"
 import { google } from "googleapis"
-import { ApiError } from "./apiError.js";
 
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const redirectURI = process.env.redireREDIRECT_URIctURI;
+const redirectURI = process.env.REDIRECT_URI;
 const refreshToken = process.env.REFRESH_TOKEN;
 const sendersAddress = process.env.SENDERS_ADDRESS;
 
@@ -32,7 +31,7 @@ class EmailService {
                 }
             });
         } catch (error) {
-            console.log('Error while creating email transporter E:', error);
+            throw new Error('Error while creating email transporter');
         }
     };
 
@@ -44,14 +43,14 @@ class EmailService {
                 from: `"PRAGYAAN" <${sendersAddress}>`,
                 to,
                 subject,
-                htmlContent: this.wrapInBaseTemplate(htmlContent)
+                html: this.wrapInBaseTemplate(htmlContent)
             }
 
             const result = await transporter.sendMail(mailOptions);
 
             console.log("Email sent successfully!! Message ID:", result.messageId);
         } catch (error) {
-            console.log('Error while sending email E:', error);
+            throw new Error('Error while sending email');
         }
     };
 

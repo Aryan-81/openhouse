@@ -1,39 +1,26 @@
 import mongoose, { Schema } from "mongoose";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
-const schoolSchema = new Schema(
+const adminSchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
+            required: true
         },
         email: {
             type: String,
             required: true,
-            unique: true,
+            unique: true
         },
         password: {
             type: String,
-            required: true,
-        },
-        address: {
-            type: String,
-            required: true,
-        },
-        noOfStudents: {
-            type: Number,
-            required: true,
-        },
-        refreshToken: {
-            type: String,
-            select: false
-        },
+            required: true
+        }
     }, { timestamps: true }
 );
 
 // To hash the password before saving the user to the database
-schoolSchema.pre('save', async function (next) {
+adminSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
         this.password = await bcrypt.hash(this.password, 12);
     }
@@ -42,12 +29,12 @@ schoolSchema.pre('save', async function (next) {
 });
 
 // To compare the password entered by the user with the hashed password in the database
-schoolSchema.methods.comparePassword = async function (enteredPassword) {
+adminSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
 
 // To generate an access token for the user
-schoolSchema.methods.generateAccessToken = async function () {
+adminSchema.methods.generateAccessToken = async function () {
     return jwt.sign(
         {
             _id: this._id,
@@ -62,7 +49,7 @@ schoolSchema.methods.generateAccessToken = async function () {
 };
 
 // To generate a refresh token for the user
-schoolSchema.methods.generateRefreshToken = async function () {
+adminSchema.methods.generateRefreshToken = async function () {
     return jwt.sign(
         {
             _id: this._id
@@ -74,4 +61,4 @@ schoolSchema.methods.generateRefreshToken = async function () {
     );
 };
 
-export const School = mongoose.model('School', schoolSchema);
+export const Admin = mongoose.model('Admin', adminSchema);
