@@ -1,6 +1,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-clr: #003f87; /* Original dark blue */
+  --secondary-clr: #00c0ef; /* Original cyan */
+
+  /* Dark Blue Variations */
+  --deep-navy-blue: #002366;
+  --midnight-blue: #191970;
+  --prussian-blue: #003153;
+  --oxford-blue: #002147;
+  --space-cadet: #1D2951;
+
+  /* Cyan Variations */
+  --turquoise: #40E0D0;
+  --electric-cyan: #00FFFF;
+  --robin-egg-blue: #00CCCC;
+  --pacific-cyan: #00A6A6;
+  --sky-blue: #87CEEB;
+
+  /* Additional Accent Colors */
+  --teal: #008080;
+  --steel-blue: #4682B4;
+  --cerulean: #007BA7;
+  --aquamarine: #7FFFD4;
+  --peacock-blue: #005F69;
 }
 
 @media (prefers-color-scheme: dark) {
