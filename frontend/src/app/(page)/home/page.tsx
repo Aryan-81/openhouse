@@ -1,21 +1,7 @@
 'use client';
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-<<<<<<< HEAD
-import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/Ser";
-import EventsPostersSection from "@/components/EventPoster";
-
-const eventTypes = [
-    { type_id: 1, type_title: 'Art Exhibition' },
-    { type_id: 2, type_title: 'Tech Conference' },
-    { type_id: 3, type_title: 'Art Exhibition' },
-  ];
-  
-=======
-import EventPage from "../event/page";
 import { useEffect, useState } from 'react';
+import ServicesSection from '@/components/ServicesSection';
 import styles from './home.module.css'; // Import your CSS module
 
 interface EventType {
@@ -64,18 +50,9 @@ const Home: React.FC<HomeProps> = ({ eventTypes }) => {
         // Cleanup the interval on component unmount
         return () => clearInterval(interval);
     }, [targetDate]);
->>>>>>> origin/ronak-new
 
     return (
         <>
-<<<<<<< HEAD
-            <Header/>
-            <HeroSection eventTypes={eventTypes}/>
-            <ServicesSection/>
-            {/* <EventsPostersSection/> */}
-            <Footer/>
-=======
-            <Header />
             <section className={styles.heroSection} style={{ backgroundImage: 'url(/homebg.jpeg)' }} aria-label="Hero Section">
                 <div className={styles.overlay}></div>
                 <div className={styles.content}>
@@ -92,10 +69,7 @@ const Home: React.FC<HomeProps> = ({ eventTypes }) => {
                     </div>
                 </div>
             </section>
-            <EventPage />
-
-            <Footer />
->>>>>>> origin/ronak-new
+            <ServicesSection/>
         </>
     );
 };

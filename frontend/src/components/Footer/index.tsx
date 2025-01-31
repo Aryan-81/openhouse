@@ -3,12 +3,9 @@ import Link from 'next/link';
 import styles from './Footer.module.css'; // Import the CSS module
 import { useEffect } from 'react';
 import { FaYoutube, FaFacebook, FaInstagram, FaHeart, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Footer = () => {
-    // Dynamically load Bootstrap CSS
-    useEffect(() => {
-        import('bootstrap/dist/css/bootstrap.min.css');
-    }, []);
 
     return (
         <footer className={`${styles.ftcoFooter} ftco-bg-dark ftco-section`}>

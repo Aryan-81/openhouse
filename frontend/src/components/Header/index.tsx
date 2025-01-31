@@ -29,7 +29,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/event" className={styles.navItem}>
+              <Link href="/events" className={styles.navItem}>
                 Events
               </Link>
             </li>
@@ -38,9 +38,9 @@ const Header: React.FC = () => {
                 About
               </a>
             </li>
-            <li className="nav-item cta">
-              <Link href="/register?event_id=1" className="nav-link">
-                <span>Login</span>
+            <li>
+              <Link href="/register?event_id=1" className={styles.registerButton}>
+                Register
               </Link>
             </li>
           </ul>
