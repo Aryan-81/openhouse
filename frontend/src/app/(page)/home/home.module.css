@@ -1,0 +1,96 @@
+/* Base Styles */
+.heroSection {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background-attachment: scroll;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Heading Section */
+.heading {
+    margin-bottom: 2rem;
+}
+
+.mainTitle {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Countdown Section */
+.countdownSection {
+    margin-bottom: 2rem;
+}
+
+.countdownText {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.countdown {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .mainTitle {
+        font-size: 4rem;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .countdownText {
+        font-size: 1.5rem;
+    }
+
+    .countdown {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mainTitle {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+    }
+
+    .countdown {
+        font-size: 4rem;
+    }
+}

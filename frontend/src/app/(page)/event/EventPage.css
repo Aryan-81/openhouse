@@ -1,0 +1,302 @@
+/* General styles for the event container */
+.event-container {
+    padding-top: 60px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 100%, rgba(9,9,121,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Event title */
+.event-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+/* Event category layout */
+.event-category {
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 10px; /* Padding around the event category */
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* View button */
+.view-button {
+    padding: 8px 16px;
+    background-color: #4c46b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-button:hover {
+    background-color: #7973e7;
+    transform: translateY(-2px);
+}
+
+/* Event carousel */
+.event-carousel {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Reverting carousel next and prev buttons */
+.carousel .control-arrow {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 15px !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease !important;
+    box-shadow: none !important;
+    visibility: visible !important;
+}
+
+.carousel .control-arrow:hover {
+    transform: scale(1.2) !important;
+    box-shadow: none !important;
+}
+
+.carousel .control-arrow.control-prev {
+    left: 10px;
+    z-index: 10;
+}
+
+.carousel .control-arrow.control-next {
+    right: 10px;
+    z-index: 10;
+}
+
+/* Event card style */
+.event-card {
+    background-color: rgb(99, 94, 240);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.event-card:hover {
+    transform: scale(.95);
+}
+
+.event-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.event-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #fff;
+}
+
+.event-description {
+    font-size: 1rem;
+    color: #d6d2d2;
+    margin-top: 10px;
+}
+
+/* View More Button */
+.view-more-button {
+    padding: 8px 16px;
+    background-color: #3f4bca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+    margin-top: 15px;
+}
+
+.view-more-button:hover {
+    background-color: #1a1ada;
+}
+
+/* Full list view - Adjust card layout for 3 cards per row */
+.full-list {
+    padding: 30px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 20px; /* Spacing between cards */
+}
+
+/* Adjust event card inside the full list */
+.full-list .event-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 400px; /* Fixed height to keep cards uniform */
+}
+
+.full-list .event-card:hover {
+    transform: scale(1.06);
+}
+
+.full-list .event-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.full-list .event-description {
+    font-size: 0.9rem;
+    color: #d4d1d1;
+    margin-top: 8px;
+}
+
+.full-list .view-more-button {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+/* Event list grid */
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Back button for full list view */
+.full-list .back-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.full-list .back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Pop-up for full event details */
+.event-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 800px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Pop-up backdrop */
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+
+/* Show pop-up */
+.event-popup,
+.popup-backdrop {
+    display: block; /* Make visible when isPopupVisible is true */
+}
+
+/* Pop-up Heading */
+.event-popup h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Pop-up content */
+.event-popup p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Close button for the popup */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.close-popup:hover {
+    color: #ff0000;
+}
+
+/* Register button */
+.register-button {
+    padding: 10px 20px;
+    background-color: #4c46b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.register-button:hover {
+    background-color: #7973e7;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

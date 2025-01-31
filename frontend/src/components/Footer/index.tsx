@@ -47,22 +47,22 @@ const Footer = () => {
                             <h2 className={styles.ftcoHeading2}>Events</h2>
                             <ul className="list-unstyled">
                                 <li>
-                                    <a href="#technical" className={`${styles.footerLink} py-2 d-block`}>
+                                    <a href="../app/page/event" className={`${styles.footerLink} py-2 d-block`}>
                                         Technical
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#gaming" className={`${styles.footerLink} py-2 d-block`}>
+                                    <a href="../app/page/event" className={`${styles.footerLink} py-2 d-block`}>
                                         Gaming
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#onstage" className={`${styles.footerLink} py-2 d-block`}>
+                                    <a href="../app/page/event" className={`${styles.footerLink} py-2 d-block`}>
                                         On Stage
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#offstage" className={`${styles.footerLink} py-2 d-block`}>
+                                    <a href="../app/page/event" className={`${styles.footerLink} py-2 d-block`}>
                                         Off Stage
                                     </a>
                                 </li>
@@ -81,7 +81,7 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <a href="#events" className={`${styles.footerLink} py-2 d-block`}>
+                                    <a href="/event" className={`${styles.footerLink} py-2 d-block`}>
                                         Events
                                     </a>
                                 </li>
