@@ -166,8 +166,20 @@ const templateEvents: Event[] = [
         contactInfo: { phone: "234-567-8901", email: "talentshow@event.com" },
         registeredStudentsCount: 60, 
         location: "Main Stage"
+    },
+    { 
+        id: "13", 
+        name: "Coding Bootcamp", 
+        description: "Learn coding in a day.", 
+        image: photo, 
+        category: "Technical", 
+        longDescription: "An intensive one-day coding bootcamp for beginners to intermediate programmers.", 
+        contactInfo: { phone: "999-999-9999", email: "codingbootcamp@event.com" },
+        registeredStudentsCount: 120, 
+        location: "Room 202"
     }
 ];
+
 
 const EventPage: React.FC = () => {
     const [events, setEvents] = useState<Event[]>(templateEvents);
