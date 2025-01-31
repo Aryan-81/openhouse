@@ -27,7 +27,6 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -37,13 +36,13 @@
 }
 
 .mainTitle {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 400;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .countdownText {
-    font-size: 1.25rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 

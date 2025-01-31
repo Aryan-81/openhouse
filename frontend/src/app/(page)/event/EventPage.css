@@ -24,7 +24,7 @@
 .event-category {
     width: 100%;
     margin-bottom: 50px;
-    padding: 10px; /* Padding around the event category */
+    padding: 10px;
 }
 
 .category-header {
@@ -65,7 +65,6 @@
     position: relative;
 }
 
-/* Reverting carousel next and prev buttons */
 .carousel .control-arrow {
     background-color: transparent !important;
     border: none !important;
@@ -93,7 +92,7 @@
 
 /* Event card style */
 .event-card {
-    background-color: rgb(82, 78, 195);
+    background-color: rgb(56, 53, 152);
     padding: 20px;
     border-radius: 12px;
     transition: transform 0.3s ease;
@@ -151,7 +150,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 20px; /* Spacing between cards */
+    gap: 20px;
 }
 
 /* Adjust event card inside the full list */
@@ -208,7 +207,7 @@
 
 /* Pop-up for full event details */
 .event-popup {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -223,7 +222,6 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Pop-up backdrop */
 .popup-backdrop {
     position: fixed;
     top: 0;
@@ -232,16 +230,14 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* Show pop-up */
 .event-popup,
 .popup-backdrop {
-    display: block; /* Make visible when isPopupVisible is true */
+    display: block;
 }
 
-/* Pop-up Heading */
 .event-popup h2 {
     font-size: 2rem;
     font-weight: bold;
@@ -249,14 +245,12 @@
     margin-bottom: 20px;
 }
 
-/* Pop-up content */
 .event-popup p {
     font-size: 1.2rem;
     color: #555;
     margin-bottom: 15px;
 }
 
-/* Close button for the popup */
 .close-popup {
     position: absolute;
     top: 10px;
@@ -273,7 +267,6 @@
     color: #ff0000;
 }
 
-/* Register button */
 .register-button {
     padding: 10px 20px;
     background-color: #4c46b9;
@@ -290,13 +283,20 @@
     background-color: #7973e7;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
+/* Media Query for small screen sizes */
+@media (max-width: 768px) {
+  /* Full list view - Adjust for smaller screens */
+  .full-list {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row */
+  }
+
+  /* Event card inside the full list */
+  .full-list .event-card {
+    height: auto; /* Allow height to adjust for smaller screens */
+  }
+
+  /* Event list grid for even smaller screens */
+  .event-list {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row */
+  }
 }

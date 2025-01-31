@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 101;
+  box-shadow: 0 4px 15px rgba(132, 129, 129, 0.836); /* Bright shadow below navbar */
 }
 
 /* Navbar Container */
@@ -63,7 +64,8 @@
 }
 
 .navItem:hover {
-  color: #f8d210;
+  color: #7593dd;
+  font-size: 1.1rem;
 }
 
 /* Register Button */
@@ -78,7 +80,7 @@
 }
 
 .registerButton:hover {
-  background: #ffd700;
+  background: #7593dd;
 }
 
 /* Mobile Responsive */
@@ -92,7 +94,7 @@
     top: 60px;
     left: 0;
     width: 100%;
-    background: #343a40;
+    background: #312e8b;
     display: none;
     flex-direction: column;
     padding: 20px 0;

@@ -1,8 +1,9 @@
 /* Footer Wrapper */
 .ftcoFooter {
-    background-color: #1a1a1a;
+    background-color: rgb(8, 9, 49);
     color: white;
-    padding: 3rem 0;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
     width: 100%; /* Ensures it takes full width but doesn't overflow */
     box-sizing: border-box; /* Prevents extra width issues */
 }
@@ -59,7 +60,7 @@
 }
 
 .ftcoFooterSocial a:hover {
-    color: #f8b739;
+    color: #7593dd;
 }
 
 /* Footer Links */
@@ -80,7 +81,7 @@
 }
 
 .footerLink:hover {
-    color: #f8b739;
+    color: #7593dd;
 }
 
 /* Contact Section */
@@ -92,7 +93,7 @@
 }
 
 .icon {
-    color: #f8b739;
+    color: #7593dd;
 }
 
 /* Copyright Section */
