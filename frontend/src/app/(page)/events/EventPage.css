@@ -3,8 +3,10 @@
     padding-top: 60px;
     padding-right: 30px;
     padding-left: 30px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 100%, rgba(9,9,121,1) 100%);
+    background: var(--background-clr);
+    /* Updated to use primary color */
+    /* background: linear-gradient( var(--background-clr)80%, var(--secondary-clr) 100%); */
+    /* Updated gradient */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,7 +19,7 @@
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 40px;
-    color: #fff;
+    color: var(--foreground-clr);
 }
 
 /* Event category layout */
@@ -37,14 +39,14 @@
 .category-title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--primary-clr);
 }
 
 /* View button */
 .view-button {
     padding: 8px 16px;
-    background-color: #4c46b9;
-    color: white;
+    background-color: var(--secondary-clr);
+    color: var(--foreground-clr);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -54,7 +56,8 @@
 }
 
 .view-button:hover {
-    background-color: #7973e7;
+    background-color: var(--teal);
+    /* Updated to use secondary color */
     transform: translateY(-2px);
 }
 
@@ -92,12 +95,13 @@
 
 /* Event card style */
 .event-card {
-    background-color: rgb(56, 53, 152);
+    background-color: var(--background-clr);
     padding: 20px;
     border-radius: 12px;
     transition: transform 0.3s ease;
     margin-bottom: 20px;
     height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.295);
 }
 
 .event-card:hover {
@@ -115,7 +119,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 15px;
-    color: #fff;
+    color: var(--primary-clr) ;
 }
 
 .event-description {
@@ -127,8 +131,9 @@
 /* View More Button */
 .view-more-button {
     padding: 8px 16px;
-    background-color: #6e79ee;
-    color: white;
+    background-color: var(--secondary-clr);
+    /* Updated to use secondary color */
+    color: var(--background-clr);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -140,7 +145,8 @@
 }
 
 .view-more-button:hover {
-    background-color: #1a1ada;
+    background-color: var(--secondary-sd);
+    /* Updated to use secondary color */
 }
 
 /* Full list view - Adjust card layout for 3 cards per row */
@@ -149,7 +155,8 @@
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cards per row */
     gap: 20px;
 }
 
@@ -157,7 +164,8 @@
 .full-list .event-card {
     padding: 20px;
     margin-bottom: 20px;
-    height: 400px; /* Fixed height to keep cards uniform */
+    height: 400px;
+    /* Fixed height to keep cards uniform */
 }
 
 .full-list .event-card:hover {
@@ -168,12 +176,12 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 10px;
-    color: #fff;
+    color: var(--primary-clr);
 }
 
 .full-list .event-description {
     font-size: 0.9rem;
-    color: #d4d1d1;
+    color: var(--space-cadet);
     margin-top: 8px;
 }
 
@@ -192,7 +200,8 @@
 /* Back button for full list view */
 .full-list .back-button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: var(--secondary-clr);
+    /* Updated to use secondary color */
     color: white;
     border: none;
     border-radius: 5px;
@@ -202,7 +211,8 @@
 }
 
 .full-list .back-button:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-clr);
+    /* Updated to use secondary color */
 }
 
 /* Pop-up for full event details */
@@ -269,7 +279,8 @@
 
 .register-button {
     padding: 10px 20px;
-    background-color: #4c46b9;
+    background-color: var(--secondary-clr);
+    /* Updated to use secondary color */
     color: white;
     border: none;
     border-radius: 5px;
@@ -280,23 +291,28 @@
 }
 
 .register-button:hover {
-    background-color: #7973e7;
+    background-color: var(--secondary-clr);
+    /* Updated to use secondary color */
 }
 
 /* Media Query for small screen sizes */
 @media (max-width: 768px) {
-  /* Full list view - Adjust for smaller screens */
-  .full-list {
-    grid-template-columns: repeat(1, 1fr); /* 1 card per row */
-  }
 
-  /* Event card inside the full list */
-  .full-list .event-card {
-    height: auto; /* Allow height to adjust for smaller screens */
-  }
+    /* Full list view - Adjust for smaller screens */
+    .full-list {
+        grid-template-columns: repeat(1, 1fr);
+        /* 1 card per row */
+    }
 
-  /* Event list grid for even smaller screens */
-  .event-list {
-    grid-template-columns: repeat(1, 1fr); /* 1 card per row */
-  }
+    /* Event card inside the full list */
+    .full-list .event-card {
+        height: auto;
+        /* Allow height to adjust for smaller screens */
+    }
+
+    /* Event list grid for even smaller screens */
+    .event-list {
+        grid-template-columns: repeat(1, 1fr);
+        /* 1 card per row */
+    }
 }

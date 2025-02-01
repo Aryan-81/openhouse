@@ -1,6 +1,6 @@
 /* Footer Wrapper */
 .ftcoFooter {
-    background-color: rgb(8, 9, 49);
+    background-color: var(--primary-clr); /* Updated to use primary color */
     color: white;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
@@ -60,7 +60,7 @@
 }
 
 .ftcoFooterSocial a:hover {
-    color: #7593dd;
+    color: var(--secondary-clr); /* Updated to use secondary color */
 }
 
 /* Footer Links */
@@ -81,7 +81,7 @@
 }
 
 .footerLink:hover {
-    color: #7593dd;
+    color: var(--secondary-clr); /* Updated to use secondary color */
 }
 
 /* Contact Section */
@@ -93,7 +93,7 @@
 }
 
 .icon {
-    color: #7593dd;
+    color: var(--secondary-clr); /* Updated to use secondary color */
 }
 
 /* Copyright Section */
