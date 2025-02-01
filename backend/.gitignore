@@ -1,41 +1,79 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
 
-# dependencies
-node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Django-specific files
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
 
-# testing
-/coverage
+# Environment variables
+.env
+.env.*
 
-# next.js
-/.next/
-/out/
+# Virtual environment directories
+venv/
+venv_*/
+env/
+env_*/
+.idea/
+.vscode/
 
-# production
-/build
+# Static and media files (can be generated automatically)
+static/
+media/
 
-# misc
-.DS_Store
-*.pem
+# PyCharm IDE settings
+.idea/
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# VS Code settings
+.vscode/
 
-# env files (can opt-in for committing if needed)
-.env*
+# MySQL and PostgreSQL database files
+*.sql
+*.db
 
-# vercel
-.vercel
+# Django migrations
+*/migrations/*
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Local configuration files
+*.local
+*.sqlite3
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Coverage reports
+.coverage
+.coverage.*
+nosetests.xml
+test_coverage/
+
+# Django Secret Key file (for security)
+*.key
+
+# Docker-related files
+docker-compose.override.yml
+.docker/
+.dockerignore
+
+# IDE files
+*.swp
+*.swo
+*.swn
+.idea/
+
+# Backup files
+*~
+
+# Python dependencies
+*.egg
+*.egg-info
+dist/
+build/
+
+myenv/
