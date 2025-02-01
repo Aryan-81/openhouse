@@ -2,18 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import ServicesSection from '@/components/ServicesSection';
-import styles from './home.module.css'; // Import your CSS module
+import HeroSection from '@/components/HeroSection';
+import styles from './home.module.css'; 
+import ChiefGuestSection from '@/components/ChiefGuestSection';
 
-interface EventType {
-    type_id: number;
-    type_title: string;
-}
-
-interface HomeProps {
-    eventTypes: EventType[];
-}
-
-const Home: React.FC<HomeProps> = ({ eventTypes }) => {
+const Home = () => {
     // State to store the countdown time
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
@@ -53,23 +46,17 @@ const Home: React.FC<HomeProps> = ({ eventTypes }) => {
 
     return (
         <>
-            <section className={styles.heroSection} style={{ backgroundImage: 'url(/homebg.jpeg)' }} aria-label="Hero Section">
-                <div className={styles.overlay}></div>
-                <div className={styles.content}>
-                    <div className={styles.heading}>
-                        <h1 className={styles.mainTitle}>Pragyaan</h1>
-                        <h2 className={styles.subtitle}>Open Day Outreach Program</h2>
-                    </div>
-
-                    <div className={styles.countdownSection}>
-                        <p className={styles.countdownText}>Fest starts in</p>
-                        <h1 className={styles.countdown}>
-                            {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m : {timeLeft.seconds}s
-                        </h1>
-                    </div>
-                </div>
+            <HeroSection />
+            <section className={styles.about}>
+                <h2>About Pragyaan</h2>
+                <p>An Open Day is a unique initiative aimed at fostering scientific curiosity and technological innovation among school students. Organized at IIT Jammu, this two-day event provides an immersive learning experience through interactive exhibits, hands-on activities, and thought-provoking discussions.
+                    With 100+ schools and 4000+ students expected to participate, Pragyaan serves as a platform to bridge the gap between academia, industry, and young minds. The event promotes STEAM education (Science, Technology, Engineering, Arts, and Mathematics) and encourages students to explore emerging fields like Artificial Intelligence, Robotics, Drones, AR/VR, and Astronomy.
+                    Additionally, students can engage in artistic, literary, and scientific activities, interact with experts, and witness cutting-edge innovations. The presence of esteemed dignitaries, including the Honourable Minister of Science and Technology, Dr. Jitendra Singh, makes this event an unparalleled opportunity for inspiration and learning.
+                    Join us at Pragyaan and step into a world of creativity, knowledge, and discovery! 🚀</p>
             </section>
-            <ServicesSection/>
+            <ServicesSection />
+            <ChiefGuestSection/>
+
         </>
     );
 };

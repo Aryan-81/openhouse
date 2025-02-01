@@ -1,95 +1,61 @@
-/* Base Styles */
-.heroSection {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    background-attachment: scroll;
+.about {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    margin: 5rem auto;
 }
 
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    margin: 0 auto;
-}
-
-/* Heading Section */
-.heading {
-    margin-bottom: 2rem;
-}
-
-.mainTitle {
-    font-size: 4rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-}
-
-.subtitle {
-    font-size: 2rem;
-    font-weight: 400;
-}
-
-/* Countdown Section */
-.countdownSection {
-    margin-bottom: 2rem;
-}
-
-.countdownText {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.countdown {
+.about h2 {
     font-size: 2.5rem;
     font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Responsive Styles */
-@media (min-width: 768px) {
-    .mainTitle {
-        font-size: 4rem;
+.about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #495057;
+    text-align: justify;
+    animation: slideIn 1s ease-in-out;
+}
+
+.about p::first-letter {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.about p:hover {
+    color: #212529;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
 
-    .subtitle {
-        font-size: 2rem;
-    }
-
-    .countdownText {
-        font-size: 1.5rem;
-    }
-
-    .countdown {
-        font-size: 3rem;
+    to {
+        opacity: 1;
     }
 }
 
-@media (min-width: 1024px) {
-    .mainTitle {
-        font-size: 5rem;
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
     }
 
-    .subtitle {
-        font-size: 2.5rem;
-    }
-
-    .countdown {
-        font-size: 4rem;
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
+
+
+
+/* card end  */
