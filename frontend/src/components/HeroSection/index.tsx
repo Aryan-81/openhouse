@@ -3,16 +3,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react'; // Import useEffect and useState
 import styles from './HeroSection.module.css'; // Import CSS Module
 
-interface EventType {
-    type_id: number;
-    type_title: string;
-}
 
-interface HeroSectionProps {
-    eventTypes: EventType[];
-}
 
-const HeroSection: React.FC<HeroSectionProps> = ({ eventTypes }) => {
+const HeroSection = () => {
     // State to store the countdown time
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
@@ -70,23 +63,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ eventTypes }) => {
                     <h1 className={styles.countdown} id="demo">
                         {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m : {timeLeft.seconds}s
                     </h1>
-                </div>
-
-                {/* Event Types Section */}
-                <div className={styles.eventTypes}>
-                    <h2 className={styles.eventTypesTitle}>Explore Events</h2>
-                    <div className={styles.eventLinks}>
-                        {eventTypes.map((type, index) => (
-                            <Link 
-                                key={type.type_id} 
-                                href={`#${index}`} 
-                                className={styles.eventLink}
-                                aria-label={`Explore ${type.type_title}`}
-                            >
-                                {type.type_title}
-                            </Link>
-                        ))}
-                    </div>
                 </div>
             </div>
         </section>
