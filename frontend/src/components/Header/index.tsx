@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import { Modal, Button } from "react-bootstrap"; // Import Bootstrap components
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Image from "next/image";
 
 const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -26,6 +27,7 @@ const Header: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
+          <Image src="/logo.svg" alt="Logo" className={styles.logo} width={50} height={50} />
           PRAGYAAN
         </Link>
 

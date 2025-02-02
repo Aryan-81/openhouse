@@ -31,6 +31,11 @@
   text-decoration: none;
   color: white;
 }
+.logo{
+  object-fit: cover; 
+  transform: scale(2);
+  margin: 0 16px;
+}
 
 /* Menu Button (Mobile) */
 .menuButton {
@@ -87,6 +92,19 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    
+    color: white;
+  }
+  .logo{
+    height: 40px !important;
+    width: 40px !important ;
+    transform: scale(2);
+    margin: 0 12px;
+  }
   .menuButton {
     display: block;
   }
