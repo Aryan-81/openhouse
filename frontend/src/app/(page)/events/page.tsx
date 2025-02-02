@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./EventPage.css";
+import './EventPage.css';
 
 // Importing the image
 import photo from './photo.jpg';
@@ -16,195 +16,96 @@ import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
 import { StaticImageData } from "next/image";
 
-// Update the interface to accept imported images or string URLs
+// Define the Event interface
 interface Event {
-    id: string;
-    name: string;
-    description: string;
-    image: string | StaticImageData;
-    category: string;
-    longDescription: string;
-    contactInfo: {
-        phone: string;
-        email: string;
-    };
-    registeredStudentsCount: number; // Updated to hold the count of registered students
-    location: string;
+    Event_id: string;
+    Event_Name: string;
+    Event_des_short: string;
+    Event_des_long: string;
+    Event_Head: string;
+    Event_Team: string;
+    Contact_Phone_number1: string;
+    Contact_Email1: string;
+    Contact_Phone_number2: string;
+    Contact_Email2: string;
+    Pre_Registered: boolean;
+    Number_Registered: number;
+    Space_Location: string;
+    Category: string;
+    image?: string | StaticImageData; // Optional image property
 }
-
-const categories = ["Technical", "Gaming", "Off-Stage", "On-Stage"];
 
 const templateEvents: Event[] = [
     {
-        id: "1",
-        name: "Hackathon",
-        description: "A coding competition.",
-        image: photo,
-        category: "Technical",
-        longDescription: "A full day event where coders compete to solve complex problems.",
-        contactInfo: { phone: "123-456-7890", email: "contact@hackathon.com" },
-        registeredStudentsCount: 50,
-        location: "Room 101"
+        Event_id: "E001",
+        Event_Name: "Tech Symposium",
+        Event_des_short: "Annual tech meet-up",
+        Event_des_long: "A gathering of technology enthusiasts, developers, and industry experts to discuss the latest advancements in technology.",
+        Event_Head: "John Doe",
+        Event_Team: "Alice, Bob, Charlie, David",
+        Contact_Phone_number1: "+1234567890",
+        Contact_Email1: "event.head@example.com",
+        Contact_Phone_number2: "+0987654321",
+        Contact_Email2: "support@example.com",
+        Pre_Registered: true,
+        Number_Registered: 150,
+        Space_Location: "Hall A1",
+        Category: "Technical",
+        image: photo, // Example image
     },
     {
-        id: "2",
-        name: "LAN Gaming",
-        description: "Multiplayer gaming event.",
-        image: photo,
-        category: "Gaming",
-        longDescription: "A fast-paced multiplayer gaming event where teams compete for glory.",
-        contactInfo: { phone: "987-654-3210", email: "gaming@event.com" },
-        registeredStudentsCount: 90,
-        location: "Hall A"
+        Event_id: "E002",
+        Event_Name: "Art Exhibition",
+        Event_des_short: "Showcasing contemporary art",
+        Event_des_long: "An exhibition featuring modern and classical artworks from renowned artists.",
+        Event_Head: "Emily Smith",
+        Event_Team: "Sophia, James, Michael",
+        Contact_Phone_number1: "+1122334455",
+        Contact_Email1: "art.events@example.com",
+        Contact_Phone_number2: "+5566778899",
+        Contact_Email2: "info@example.com",
+        Pre_Registered: false,
+        Number_Registered: 80,
+        Space_Location: "Gallery B",
+        Category: "Off-Stage",
+        image: photo, // Example image
     },
     {
-        id: "3",
-        name: "Singing Competition",
-        description: "Showcase your singing talent.",
-        image: photo,
-        category: "Off-Stage",
-        longDescription: "A stage to show your vocal talent, compete with other amazing singers.",
-        contactInfo: { phone: "234-567-8901", email: "singing@event.com" },
-        registeredStudentsCount: 30,
-        location: "Room 202"
-    },
-    {
-        id: "4",
-        name: "Drama Performance",
-        description: "Live stage drama.",
-        image: photo,
-        category: "On-Stage",
-        longDescription: "A live drama performance showcasing amazing acting skills and creativity.",
-        contactInfo: { phone: "345-678-9012", email: "drama@event.com" },
-        registeredStudentsCount: 12,
-        location: "Auditorium"
-    },
-    {
-        id: "5",
-        name: "Code Jam",
-        description: "Competitive coding event.",
-        image: photo,
-        category: "Technical",
-        longDescription: "Test your coding skills and solve challenging problems in a time-constrained environment.",
-        contactInfo: { phone: "456-789-0123", email: "codejam@event.com" },
-        registeredStudentsCount: 70,
-        location: "Lab 305"
-    },
-    {
-        id: "6",
-        name: "VR Gaming Tournament",
-        description: "Virtual reality gaming competition.",
-        image: photo,
-        category: "Gaming",
-        longDescription: "Experience the future of gaming with immersive VR experiences in this tournament.",
-        contactInfo: { phone: "567-890-1234", email: "vrgaming@event.com" },
-        registeredStudentsCount: 50,
-        location: "VR Hall"
-    },
-    {
-        id: "7",
-        name: "Dance Battle",
-        description: "A dance competition for all styles.",
-        image: photo,
-        category: "Off-Stage",
-        longDescription: "Bring your best moves to the stage in a battle against other dancers.",
-        contactInfo: { phone: "678-901-2345", email: "dancebattle@event.com" },
-        registeredStudentsCount: 40,
-        location: "Dance Studio"
-    },
-    {
-        id: "8",
-        name: "Comedy Night",
-        description: "Stand-up comedy performances.",
-        image: photo,
-        category: "On-Stage",
-        longDescription: "A night filled with laughter as stand-up comedians perform live.",
-        contactInfo: { phone: "789-012-3456", email: "comedynight@event.com" },
-        registeredStudentsCount: 20,
-        location: "Comedy Stage"
-    },
-    {
-        id: "9",
-        name: "AI Challenge",
-        description: "Build AI models in a race against time.",
-        image: photo,
-        category: "Technical",
-        longDescription: "Compete to build the most efficient AI model within a limited time frame.",
-        contactInfo: { phone: "890-123-4567", email: "aichallenge@event.com" },
-        registeredStudentsCount: 100,
-        location: "Room 401"
-    },
-    {
-        id: "10",
-        name: "E-sports Tournament",
-        description: "A competitive e-sports tournament.",
-        image: photo,
-        category: "Gaming",
-        longDescription: "Battle it out in a competitive e-sports tournament with exciting prizes.",
-        contactInfo: { phone: "901-234-5678", email: "esports@event.com" },
-        registeredStudentsCount: 80,
-        location: "Gaming Arena"
-    },
-    {
-        id: "11",
-        name: "Poetry Slam",
-        description: "Express yourself in poetry.",
-        image: photo,
-        category: "Off-Stage",
-        longDescription: "A stage to perform your poetry and express your emotions through words.",
-        contactInfo: { phone: "123-890-1234", email: "poetryslam@event.com" },
-        registeredStudentsCount: 25,
-        location: "Room 302"
-    },
-    {
-        id: "12",
-        name: "Talent Show",
-        description: "Show off your hidden talent.",
-        image: photo,
-        category: "On-Stage",
-        longDescription: "An event to showcase any talent you have, be it singing, dancing, or any other skill.",
-        contactInfo: { phone: "234-567-8901", email: "talentshow@event.com" },
-        registeredStudentsCount: 60,
-        location: "Main Stage"
-    },
-    {
-        id: "13",
-        name: "Coding Bootcamp",
-        description: "Learn coding in a day.",
-        image: photo,
-        category: "Technical",
-        longDescription: "An intensive one-day coding bootcamp for beginners to intermediate programmers.",
-        contactInfo: { phone: "999-999-9999", email: "codingbootcamp@event.com" },
-        registeredStudentsCount: 120,
-        location: "Room 202"
+        Event_id: "E003",
+        Event_Name: "AI Conference",
+        Event_des_short: "AI innovations and trends",
+        Event_des_long: "A conference exploring artificial intelligence, machine learning, and deep learning technologies.",
+        Event_Head: "Robert Johnson",
+        Event_Team: "Anna, Kevin, Laura",
+        Contact_Phone_number1: "+9876543210",
+        Contact_Email1: "ai.conference@example.com",
+        Contact_Phone_number2: "+1029384756",
+        Contact_Email2: "contact@example.com",
+        Pre_Registered: true,
+        Number_Registered: 200,
+        Space_Location: "Hall C3",
+        Category: "Technical",
+        image: photo, // Example image
     }
 ];
 
-
 const EventPage: React.FC = () => {
     const [events, setEvents] = useState<Event[]>(templateEvents);
-    const [showFullList, setShowFullList] = useState<string | null>(null); // To track which category's full list to show
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null); // Selected event for pop-up
     const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false); // For showing/hiding the pop-up
+
+    // Derive categories dynamically from the events array
+    const categories = Array.from(new Set(events.map(event => event.Category)));
 
     // Get the current pathname
     const pathname = usePathname();
 
     useEffect(() => {
-        // Uncomment the API call if you're using live data
-        // axios.get("https://your-backend-api.com/events") // Replace with actual API
-        //   .then(response => setEvents(response.data))
-        //   .catch(error => console.error("Error fetching events:", error));
+        // axios.get("http://127.0.0.1:8000/api/events/") // Replace with your Django server URL
+        //     .then(response => setEvents(response.data))
+        //     .catch(error => console.error("Error fetching events:", error));
     }, []);
 
-    const handleViewFullList = (category: string) => {
-        // Toggle visibility of full list
-        if (showFullList === category) {
-            setShowFullList(null); // Close the list if it's already open
-        } else {
-            setShowFullList(category); // Open the full list for the clicked category
-        }
-    };
 
     const handleViewMore = (event: Event) => {
         setSelectedEvent(event);
@@ -228,14 +129,22 @@ const EventPage: React.FC = () => {
                     <div key={category} className="event-category">
                         <div className="category-header">
                             <h2 className="category-title">{category} Events</h2>
+                        
                         </div>
 
+
                         <div className="full-list">
-                            {events.filter(event => event.category === category).map(event => (
-                                <div key={event.id} className="event-card">
-                                    <img src={typeof event.image === 'string' ? event.image : event.image.src} alt={event.name} className="event-image" />
-                                    <h3 className="event-name">{event.name}</h3>
-                                    <p className="event-description">{event.description}</p>
+                            {events.filter(event => event.Category === category).map(event => (
+                                <div key={event.Event_id} className="event-card">
+                                    {event.image && (
+                                        <img
+                                            src={typeof event.image === 'string' ? event.image : event.image.src}
+                                            alt={event.Event_Name}
+                                            className="event-image"
+                                        />
+                                    )}
+                                    <h3 className="event-name">{event.Event_Name}</h3>
+                                    <p className="event-description">{event.Event_des_short}</p>
                                     <button className="view-more-button" onClick={() => handleViewMore(event)}>
                                         View More
                                     </button>
@@ -253,18 +162,22 @@ const EventPage: React.FC = () => {
                     <div className="popup-backdrop" onClick={handleClosePopup}></div>
                     <div className="event-popup">
                         <button className="close-popup" onClick={handleClosePopup}>×</button>
-                        <h2>{selectedEvent.name}</h2>
-                        <p>{selectedEvent.longDescription}</p>
+                        <h2>{selectedEvent.Event_Name}</h2>
+                        <p>{selectedEvent.Event_des_long}</p>
                         <div className="contact-info">
-                            <p><strong>Contact:</strong> {selectedEvent.contactInfo.phone}</p>
-                            <p><strong>Email:</strong> {selectedEvent.contactInfo.email}</p>
+                            <p><strong>Contact:</strong> {selectedEvent.Contact_Phone_number1}</p>
+                            <p><strong>Email:</strong> {selectedEvent.Contact_Email1}</p>
                         </div>
                         <div className="registered-students">
-                            <p><strong>Registered Students:</strong> {selectedEvent.registeredStudentsCount}</p>
+                            <p><strong>Registered Students:</strong> {selectedEvent.Number_Registered}</p>
                         </div>
-                        <p><strong>Location:</strong> {selectedEvent.location}</p>
-                        <p><strong>Category:</strong> {selectedEvent.category}</p>
-                        <button className="register-button">Register</button>
+                        <p><strong>Location:</strong> {selectedEvent.Space_Location}</p>
+                        <p><strong>Category:</strong> {selectedEvent.Category}</p>
+                        {selectedEvent.Pre_Registered ? (
+                            <button className="register-button">Register</button>
+                        ) : (
+                            <h3>Open for all</h3>
+                        )}
                     </div>
                 </>
             )}

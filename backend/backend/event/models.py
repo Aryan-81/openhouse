@@ -1,7 +1,7 @@
 from django.db import models
 from backend import settings
 
-# Create your models here.
+#  models start here.
 
 #profile of Evaluator
 class Event(models.Model):
@@ -19,6 +19,7 @@ class Event(models.Model):
   Number_Registered = models.IntegerField(default=0, blank=False)
   Space_Location = models.CharField(max_length=10,blank=True)
   Category=models.CharField(max_length=10,blank=True)
+#   photo = models.CharField(max_length=200,blank=False, placeholder = '/photo.jpg')
 
   def __str__(self):
         return f'{self.Event_Name}'
