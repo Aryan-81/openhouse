@@ -1,0 +1,31 @@
+.card {
+  height: 25rem;
+  width: 20rem;
+  background-color: var(--bk-ld);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.image {
+  height: 70%;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.dets {
+  font-size: 2em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: max-content;
+  height: max-content;
+  margin: 1.2em auto;
+  text-wrap: wrap;
+}

@@ -51,7 +51,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <a href="#about" className={styles.navItem} onClick={closeNavMenu}>
+              <a href="/about" className={styles.navItem}>
                 About
               </a>
             </li>
