@@ -1,6 +1,6 @@
 /* General styles for the event container */
 .event-container {
-    padding-top: 60px;
+    padding-top: 80px;
     padding-right: 30px;
     padding-left: 30px;
     background: var(--background-clr);
