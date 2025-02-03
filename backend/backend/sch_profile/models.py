@@ -34,4 +34,3 @@ class Sch_profile(models.Model):
         """Method to mark the profile as verified."""
         self.status = 2
         self.save()
- 
