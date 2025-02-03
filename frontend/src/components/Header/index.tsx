@@ -22,10 +22,15 @@ const Header: React.FC = () => {
     setShowModal(false); // Close the modal
   };
 
+  const closeNavMenu = () => {
+    setIsNavOpen(false); // Close the navigation menu
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
+          <img src="/logo.jpg" alt="Logo" /> {/* Add the path to your logo */}
           PRAGYAAN
         </Link>
 
@@ -36,17 +41,17 @@ const Header: React.FC = () => {
         <div className={`${styles.navLinks} ${isNavOpen ? styles.show : ""}`}>
           <ul>
             <li>
-              <Link href="/" className={styles.navItem}>
+              <Link href="/" className={styles.navItem} onClick={closeNavMenu}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/events" className={styles.navItem}>
+              <Link href="/events" className={styles.navItem} onClick={closeNavMenu}>
                 Events
               </Link>
             </li>
             <li>
-              <a href="#about" className={styles.navItem}>
+              <a href="#about" className={styles.navItem} onClick={closeNavMenu}>
                 About
               </a>
             </li>

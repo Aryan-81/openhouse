@@ -5,7 +5,7 @@
   width: 100%;
   background: var(--primary-clr); /* Updated to use primary color */
   color: white;
-  padding: 5px 5px;
+  padding: 5px 20px; /* Adjusted for better padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,12 +16,22 @@
 
 /* Navbar Container */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1200px; /* Limits the width of the navbar */
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px; /* Adjusted padding to avoid excessive space */
+}
+
+/* For larger screens */
+@media (min-width: 1250px) {
+  .container {
+    width: 100%; /* Ensure the container takes the full width */
+    max-width: 1200px; /* Limit max width to avoid excessive padding */
+    padding: 0 10px; /* Reduce padding on larger screens */
+  }
 }
 
 /* Brand Logo */
@@ -30,6 +40,15 @@
   font-weight: bold;
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  width: 40px; 
+  height: auto;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 /* Menu Button (Mobile) */
