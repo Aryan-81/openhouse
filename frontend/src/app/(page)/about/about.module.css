@@ -9,8 +9,8 @@
 }
 
 .heading {
-  width: max-content;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   font-family: 'Bebas Neue';
   font-size: 5em;
   font-weight: 500;
@@ -27,8 +27,13 @@
 }
 
 .ourTeam > h1 {
+  width: max-content;
   font-size: 10em;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .teamCategory {
@@ -50,4 +55,31 @@
   justify-content: center;
   column-gap: 2em;
   row-gap: 4em;
+}
+
+@media (width < 768px) {
+  .aim {
+    width: 100%;
+  }
+
+  .ourTeam {
+    width: 100vw;
+  }
+
+  .ourTeam > h1 {
+    font-size: 30vw;
+    width: 100vw;
+  }
+
+  .teamCategory {
+    width: max-content;
+    margin: 0;
+  }
+  
+  .teamCategory .cards {
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

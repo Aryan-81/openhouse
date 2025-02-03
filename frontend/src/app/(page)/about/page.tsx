@@ -30,7 +30,7 @@ function page() {
         </div>
 
         {/* Add this hr after each section */}
-        <hr style={{margin: '7em 10em 4em 10em', opacity: '0.3'}} />
+        <hr style={{margin: '7em 10vw 4em 10vw', opacity: '0.3'}} />
 
         <div className={styles.teamCategory}>
           <h1>Students</h1>
