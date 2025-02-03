@@ -1,110 +1,84 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import styles from './dashboard.module.css'
+import { MdLocationOn, MdMail, MdPhone } from 'react-icons/md'
 
 const DashboardPage: React.FC = () => {
-    // Hardcoded data for demonstration
-    const schoolDetails = {
-        school_id: '234', // Not displayed
-        name: 'Green Valley High School',
-        address: '123 Education Lane, Knowledge City',
-        contact: 'contact@greenvalley.edu | +91 9876543210',
-        district: 'Boya',
-        state: 'UP',
-        affiliation_no: '234322342',
-        email: 'sometion@email.com',
-        phone_no: '2321312312',
-        landline: '234-23423',
-        typeofschool: 'Public/Gov/Private/Funded/Other',
-        isATL: 'Yes', // Either they have ATL lab or not
-        isTinker: 'No', // Either they have Tinker lab
-        isPMShri: 'Yes', // Is that school fall under PM Shri
-        isprevious: 'No', // Whether they have previous interaction with us or not
-        isverified: 'No'
-    };
+	// Hardcoded data for demonstration
+	const schoolDetails = {
+		school_id: '234', // Not displayed
+		name: 'Green Valley High School',
+		address: '123 Education Lane, Knowledge City',
+		contact: 'contact@greenvalley.edu | +91 9876543210',
+		district: 'Boya',
+		state: 'UP',
+		zipcode: '181121',
+		affiliation_no: '234322342',
+		email: 'sometion@email.com',
+		phone_no: '2321312312',
+		landline: '234-23423',
+		typeofschool: 'Public / Gov / Private / Funded / Other',
+		isATL: 'Yes', // Either they have ATL lab or not
+		isTinker: 'No', // Either they have Tinker lab
+		isPMShri: 'Yes', // Is that school fall under PM Shri
+		isprevious: 'No', // Whether they have previous interaction with us or not
+		isverified: 'No'
+	};
 
-    const scheduled_slot = {
-        date: '2023-11-10',
-        from_time: '10:00 AM',
-        to_time: '12:00 PM',
-    };
+	const scheduled_slot = {
+		date: '2023-11-10',
+		from_time: '10:00 AM',
+		to_time: '12:00 PM',
+	};
 
-    return (
-        <div className="container mt-5">
-            <h1 className="text-center mb-4">School Dashboard</h1>
+	return (
+		<div className={styles.mainContainer}>
+			<div className={styles.backImage}>
+				<img src="https://iitjammu.ac.in/slider/slider3.jpg" alt="" />
+			</div>
 
-            {/* School Details Section */}
-            <div className="card mb-4 shadow-sm">
-                <div className="card-header bg-primary text-white">
-                    <h5 className="card-title mb-0">School Details</h5>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">
-                        <strong>Name:</strong> {schoolDetails.name}
-                    </p>
-                    <p className="card-text">
-                        <strong>Address:</strong> {schoolDetails.address}
-                    </p>
-                    <p className="card-text">
-                        <strong>Contact:</strong> {schoolDetails.contact}
-                    </p>
-                    <p className="card-text">
-                        <strong>District:</strong> {schoolDetails.district}
-                    </p>
-                    <p className="card-text">
-                        <strong>State:</strong> {schoolDetails.state}
-                    </p>
-                    <p className="card-text">
-                        <strong>Affiliation No:</strong> {schoolDetails.affiliation_no}
-                    </p>
-                    <p className="card-text">
-                        <strong>Email:</strong> {schoolDetails.email}
-                    </p>
-                    <p className="card-text">
-                        <strong>Phone No:</strong> {schoolDetails.phone_no}
-                    </p>
-                    <p className="card-text">
-                        <strong>Landline:</strong> {schoolDetails.landline}
-                    </p>
-                    <p className="card-text">
-                        <strong>Type of School:</strong> {schoolDetails.typeofschool}
-                    </p>
-                    <p className="card-text">
-                        <strong>ATL Lab:</strong> {schoolDetails.isATL}
-                    </p>
-                    <p className="card-text">
-                        <strong>Tinker Lab:</strong> {schoolDetails.isTinker}
-                    </p>
-                    <p className="card-text">
-                        <strong>PM Shri School:</strong> {schoolDetails.isPMShri}
-                    </p>
-                    <p className="card-text">
-                        <strong>Previous Interaction:</strong> {schoolDetails.isprevious}
-                    </p>
-                    <p className="card-text">
-                        <strong>Verified:</strong> {schoolDetails.isprevious}
-                    </p>
-                </div>
-            </div>
+			{/* Main Content of the Dashboard */}
 
-            {/* Scheduled Slot Section */}
-            <div className="card mb-4 shadow-sm">
-                <div className="card-header bg-success text-white">
-                    <h5 className="card-title mb-0">Scheduled Slot</h5>
-                </div>
-                <div className="card-body">
-                    <p className="card-text">
-                        <strong>Date:</strong> {scheduled_slot.date}
-                    </p>
-                    <p className="card-text">
-                        <strong>From:</strong> {scheduled_slot.from_time}
-                    </p>
-                    <p className="card-text">
-                        <strong>To:</strong> {scheduled_slot.to_time}
-                    </p>
-                </div>
-            </div>
-        </div>
-    );
+			<div className={styles.dashboardContainer}>
+				<div className={styles.dashboardImage}>
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2GINCiqV-9Uw2MbxevQjiJGD2fdO6WKaGBQ&s" alt="" />
+				</div>
+				<div className={styles.dashboardContent}>
+					{/* This can also be added if we want as per the reference */}
+					<div className={styles.eventdets}>
+						<div className={styles.card}>
+							<h4>XX</h4>
+							<p>Events Registered</p>
+						</div>
+						<div className={styles.card}>
+							<h4>XX</h4>
+							<p>Students Registered</p>
+						</div>
+					</div>
+					<h3>{schoolDetails.name}</h3>
+					<div className={styles.dets}>
+						<div className={styles.detsLeft}>
+							<p><MdLocationOn size={'25px'} style={{margin: '0 10px'}} />{schoolDetails.address}</p>
+							<p><span>District</span> : {schoolDetails.district}, <span>State</span> : {schoolDetails.state}</p>
+							<p><span>Zipcode</span> : {schoolDetails.zipcode}</p>
+							<p><MdMail size={'25px'} style={{margin: '0 10px'}} />{schoolDetails.email}</p>
+							<p><MdPhone size={'25px'} style={{margin: '0 10px'}} /> {schoolDetails.phone_no}</p>
+							<p><span>Landline</span> : {schoolDetails.landline}</p>
+							<p><span>Affiliation No.</span> : {schoolDetails.affiliation_no}</p>
+						</div>
+						<div className={styles.detsRight}>
+							<p><span>Type of School</span> : {schoolDetails.typeofschool}</p>
+							<p><span>ATL Lab</span> : {schoolDetails.isATL}</p>
+							<p><span>Tinker Lab</span> : {schoolDetails.isTinker}</p>
+							<p><span>PM Shri School</span> : {schoolDetails.isPMShri}</p>
+							<p><span>Previous Interaction</span> : {schoolDetails.isprevious}</p>
+							<p><span>Verified</span> : {schoolDetails.isverified}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default DashboardPage;
