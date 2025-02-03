@@ -71,7 +71,7 @@
 
 /* Register Button */
 .registerButton {
-  background: var(--foreground); /* Updated to use background color */
+  background:white; /* Updated to use background color */
   padding: 8px 15px;
   border-radius: 5px;
   font-weight: bold;
