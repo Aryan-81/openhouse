@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Carousel, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import styles from './Testmonial.module.css'
 
 interface Testimonial {
     photo: string;
@@ -47,7 +48,7 @@ const Testimonial19: React.FC = () => {
 
     return (
         <section className="ezy__testimonial19 light">
-            <Container>
+            <Container className={styles.ctr}>
                 <Row className="justify-content-center align-items-center position-relative">
                     <Col md={6} className="position-relative">
                         <div className="ezy__testimonial19-card">
