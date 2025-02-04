@@ -20,9 +20,8 @@ class Sch_profile(models.Model):
   School_IsPmshri= models.CharField(max_length=10,blank=True)
   School_IsTinkering= models.CharField(max_length=10,blank=True)
   School_IsPreviousEng= models.CharField(max_length=10,blank=True)
-  status = models.IntegerField(default=0,blank=False)
+  status = models.CharField(default='0', max_length=1,blank=False)
 
-  
   
   def __str__(self):
     return f'{self.School_Name},{self.School_District}'

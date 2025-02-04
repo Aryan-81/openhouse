@@ -289,6 +289,18 @@
     transition: background-color 0.3s ease;
     margin-top: 20px;
 }
+.registered-button {
+    padding: 10px 20px;
+    background-color: var(--primary-clr);
+    /* Updated to use secondary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
 
 .register-button:hover {
     background-color: var(--secondary-clr);

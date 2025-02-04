@@ -1,58 +1,84 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext"; // Import authentication context
 import styles from "./ProfileForm.module.css";
+import { redirect } from "next/navigation";
 
 interface FormData {
-    name: string;
-    address: string;
-    district: string;
-    state: string;
-    affiliation_no: string;
-    email: string;
-    phone_no: string;
-    landline: string;
-    typeofschool: string;
-    isATL: boolean;
-    isTinker: boolean;
-    isPMShri: boolean;
-    isprevious: boolean;
+    School_Name: string;
+    School_Address: string;
+    School_District: string;
+    School_State: string;
+    School_Affiliation_number: string;
+    School_Zipcode: string;
+    School_Phone_number: string;
+    School_Landline_number: string;
+    School_IsPublic: string;
+    School_IsAtl: string;
+    School_IsTinkering: string;
+    School_IsPmshri: string;
+    School_IsPreviousEng: string;
+    status: string;
 }
 const fieldLabels: Record<string, string> = {
-    isATL: "Has ATL?",
-    isTinker: "Has Tinkering Lab?",
-    isPMShri: "Is your school comes under PM Shri ?",
-    isprevious: "Was Previously Intercted?",
+    School_IsAtl: "Has ATL?",
+    School_IsTinkering: "Has Tinkering Lab?",
+    School_IsPmshri: "Is your school comes under PM Shri ?",
+    School_IsPreviousEng: "Was Previously Interacted?",
 };
 
 const ProfileForm: React.FC = () => {
     const { token } = useAuth();
     const [formData, setFormData] = useState<FormData>({
-        name: "",
-        address: "",
-        district: "",
-        state: "",
-        affiliation_no: "",
-        email: "",
-        phone_no: "",
-        landline: "",
-        typeofschool: "",
-        isATL: false,
-        isTinker: false,
-        isPMShri: false,
-        isprevious: false,
+        School_Name: "",
+        School_Address: "",
+        School_District: "",
+        School_State: "Jammu & Kashmir",
+        School_Affiliation_number: "",
+        School_Zipcode: "",
+        School_Phone_number: "",
+        School_Landline_number: "",
+        School_IsPublic: "",
+        School_IsAtl: "No",
+        School_IsTinkering: "No",
+        School_IsPmshri: "No",
+        School_IsPreviousEng: "No",
+        status: "1"
     });
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const api = process.env.NEXT_PUBLIC_API_URL;
 
+    useEffect(() => {
+        const getdata = async () => {
+            try {
+                const response = await fetch(`${api}school/sch_profile`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `idToken ${token}`,
+                    },
+                });
+                const data = await response.json();
+                if (data.profile !== undefined) {
+                    setFormData(data.profile);
+                }
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+
+        if (token) {
+            getdata();
+        }
+    }, [token, api]); 
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-
         setFormData({
             ...formData,
-            [name]: ["isATL", "isTinker", "isPMShri", "isprevious"].includes(name) ? value === "yes" : value,
+            [name]: ["School_IsAtl", "School_IsTinkering", "School_IsPmshri", "School_IsPreviousEng"].includes(name) ? (value === "yes" ? "yes" : "no") : value,
         });
     };
 
@@ -65,9 +91,9 @@ const ProfileForm: React.FC = () => {
 
         setLoading(true);
         setMessage(null);
-
+        console.log(formData);
         try {
-            const response = await fetch(`${api}/school/update_profile`, {
+            const response = await fetch(`${api}school/sch_profile`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,7 +101,7 @@ const ProfileForm: React.FC = () => {
                 },
                 body: JSON.stringify(formData),
             });
-
+           
             const result = await response.json();
             if (!response.ok) throw new Error(result.message || "Failed to update profile");
 
@@ -85,6 +111,7 @@ const ProfileForm: React.FC = () => {
         } finally {
             setLoading(false);
         }
+        redirect('/dashboard')
     };
 
     return (
@@ -94,21 +121,22 @@ const ProfileForm: React.FC = () => {
             {message && <div className={message.type === "success" ? styles.success : styles.error}>{message.text}</div>}
 
             <form onSubmit={handleSubmit} className={styles.form}>
-                {/* Name */}
-                <div className={styles.formGroup}>
+                {/* Other fields remain unchanged */}
+                 {/* Name */}
+                 <div className={styles.formGroup}>
                     <label className={styles.label}>Name:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} className={styles.input} required />
+                    <input type="text" name="School_Name" value={formData.School_Name} onChange={handleChange} className={styles.input} required />
                 </div>
 
                 {/* Address and District */}
                 <div className={styles.row}>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Address:</label>
-                        <input type="text" name="address" value={formData.address} onChange={handleChange} className={styles.input} required />
+                        <input type="text" name="School_Address" value={formData.School_Address} onChange={handleChange} className={styles.input} required />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>District:</label>
-                        <input type="text" name="district" value={formData.district} onChange={handleChange} className={styles.input} required />
+                        <input type="text" name="School_District" value={formData.School_District} onChange={handleChange} className={styles.input} required />
                     </div>
                 </div>
 
@@ -116,11 +144,11 @@ const ProfileForm: React.FC = () => {
                 <div className={styles.row}>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Affiliation No:</label>
-                        <input type="text" name="affiliation_no" value={formData.affiliation_no} onChange={handleChange} className={styles.input} required />
+                        <input type="text" name="School_Affiliation_number" value={formData.School_Affiliation_number} onChange={handleChange} className={styles.input} required />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>State:</label>
-                        <select name="state" value={formData.state} onChange={handleChange} className={styles.select} required>
+                        <select name="School_State" value={formData.School_State} onChange={handleChange} className={styles.select} required>
                             <option value="Jammu & Kashmir">Jammu & Kashmir</option>
                             <option value="Ladakh">Ladakh</option>
                         </select>
@@ -131,23 +159,23 @@ const ProfileForm: React.FC = () => {
                 <div className={styles.row}>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Phone No:</label>
-                        <input type="tel" name="phone_no" value={formData.phone_no} onChange={handleChange} className={styles.input} required />
+                        <input type="tel" name="School_Phone_number" value={formData.School_Phone_number} onChange={handleChange} className={styles.input} required />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Landline:</label>
-                        <input type="tel" name="landline" value={formData.landline} onChange={handleChange} className={styles.input} />
+                        <input type="tel" name="School_Landline_number" value={formData.School_Landline_number} onChange={handleChange} className={styles.input} />
                     </div>
                 </div>
 
                 {/* Email and Type of School */}
                 <div className={styles.row}>
                     <div className={styles.formGroup}>
-                        <label className={styles.label}>Email:</label>
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} required />
+                        <label className={styles.label}>Zip Code:</label>
+                        <input type="text" name="School_Zipcode" value={formData.School_Zipcode} onChange={handleChange} className={styles.input} required />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.label}>Type of School:</label>
-                        <select name="typeofschool" value={formData.typeofschool} onChange={handleChange} className={styles.select} required>
+                        <select name="School_IsPublic" value={formData.School_IsPublic} onChange={handleChange} className={styles.select} required>
                             <option value="">Select Type</option>
                             <option value="Goverment">Goverment</option>
                             <option value="Public">Public</option>
@@ -157,16 +185,15 @@ const ProfileForm: React.FC = () => {
                 </div>
 
                 {/* Additional Fields */}
-                {["isATL", "isTinker", "isPMShri", "isprevious"].map((field) => (
+                {["School_IsAtl", "School_IsTinkering", "School_IsPmshri", "School_IsPreviousEng"].map((field) => (
                     <div className={styles.formGroup} key={field}>
                         <label className={styles.label}>{fieldLabels[field]}</label>
-                        <select name={field} value={formData[field as keyof FormData] ? "yes" : "no"} onChange={handleChange} className={styles.select}>
+                        <select name={field} value={formData[field as keyof FormData]} onChange={handleChange} className={styles.select}>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
                     </div>
                 ))}
-
 
                 {/* Submit Button */}
                 <button type="submit" className={styles.button} disabled={loading}>

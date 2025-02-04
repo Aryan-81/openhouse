@@ -31,8 +31,8 @@ class RegisterEventList(APIView):
 
     def post(self, request):
         event_id = request.data.get('Event_id')
-        student_num = request.data.get('RStudent_Num')
-
+        student_num = int(request.data.get('RStudent_Num'))
+        print(student_num,event_id)
         if not event_id or student_num is None:
             return Response({'error': 'Event_id and RStudent_Num are required'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -45,7 +45,7 @@ class RegisterEventList(APIView):
         # Check if RegisterEvent already exists with the same Event and School
         if RegisterEvent.objects.filter(REvent=event, RSchool=school_profile).exists():
             return Response({'error': 'This combination of Event and School already exists'}, status=status.HTTP_400_BAD_REQUEST)
-
+        print("user",request.user)
         register_event = RegisterEvent(
             REvent=event,
             RSchool=school_profile,
