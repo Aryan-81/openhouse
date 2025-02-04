@@ -17,7 +17,7 @@ class Sch_profileSerializer(serializers.Serializer):
     School_IsPmshri= serializers.CharField(max_length=10,required=True)
     School_IsTinkering= serializers.CharField(max_length=10,required=True)
     School_IsPreviousEng= serializers.CharField(max_length=10,required=True)
-    status = serializers.IntegerField(required=True)
+    status = serializers.CharField(max_length=1,required=True)
     
     def create(self, validated_data):
         # Handle the creation of a new Evaluator instance

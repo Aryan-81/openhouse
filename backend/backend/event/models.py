@@ -1,5 +1,27 @@
 from django.db import models
 from backend import settings
+import os
+from django.utils.deconstruct import deconstructible
+
+@deconstructible
+class PathAndRename:
+    def __init__(self, sub_path):
+        self.path = sub_path
+
+    def __call__(self, instance, filename):
+        ext = filename.split('.')[-1]
+        # Get the last event with an image to determine the next counter
+        last_event = Event.objects.exclude(image='').order_by('-Event_id').first()
+        if last_event and last_event.image:
+            last_image_name = os.path.basename(last_event.image.name)
+            last_counter = int(last_image_name.split('_')[-1].split('.')[0])
+            next_counter = last_counter + 1
+        else:
+            next_counter = 1
+
+        # Set the new filename
+        filename = f'{instance.Event_id}_image_{next_counter}.{ext}'
+        return os.path.join(self.path, filename)
 
 #  models start here.
 
@@ -19,6 +41,7 @@ class Event(models.Model):
   Number_Registered = models.IntegerField(default=0, blank=False)
   Space_Location = models.CharField(max_length=10,blank=True)
   Category=models.CharField(max_length=10,blank=True)
+  image = models.ImageField(upload_to=PathAndRename('school_images/'), blank=True, null=True)
 #   photo = models.CharField(max_length=200,blank=False, placeholder = '/photo.jpg')
 
   def __str__(self):

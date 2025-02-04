@@ -7,20 +7,19 @@ import Link from "next/link";
 
 interface SchoolDetails {
     School_Name: string;
-    address: string;
-    district: string;
-    state: string;
-    zipcode: string;
-    email: string;
-    phone_no: string;
-    landline: string;
-    affiliation_no: string;
-    typeofschool: string;
-    isATL: boolean;
-    isTinker: boolean;
-    isPMShri: boolean;
-    isprevious: boolean;
-    isverified: boolean;
+    School_Address: string;
+    School_District: string;
+    School_State: string;
+    School_Affiliation_number: string;
+    School_Zipcode: string;
+    School_Phone_number: string;
+    School_Landline_number: string;
+    School_IsPublic: string;
+    School_IsAtl: string;
+    School_IsTinkering: string;
+    School_IsPmshri: string;
+    School_IsPreviousEng: string;
+    status: string;
 }
 
 const DashboardPage: React.FC = () => {
@@ -89,21 +88,20 @@ const DashboardPage: React.FC = () => {
                     <h3>{schoolDetails?.School_Name}</h3>
                     <div className={styles.dets}>
                         <div className={styles.detsLeft}>
-                            <p><span>Address:</span> {schoolDetails?.address}</p>
-                            <p><span>District:</span> {schoolDetails?.district}, <span>State:</span> {schoolDetails?.state}</p>
-                            <p><span>Zipcode:</span> {schoolDetails?.zipcode}</p>
-                            <p><span>Email:</span> {schoolDetails?.email}</p>
-                            <p><span>Phone No:</span> {schoolDetails?.phone_no}</p>
-                            <p><span>Landline:</span> {schoolDetails?.landline}</p>
-                            <p><span>Affiliation No:</span> {schoolDetails?.affiliation_no}</p>
+                            <p><span>Address:</span> {schoolDetails?.School_Address}</p>
+                            <p><span>District:</span> {schoolDetails?.School_District}, <span>State:</span> {schoolDetails?.School_State}</p>
+                            <p><span>Zipcode:</span> {schoolDetails?.School_Zipcode}</p>
+                            <p><span>Phone No:</span> {schoolDetails?.School_Phone_number}</p>
+                            <p><span>Landline:</span> {schoolDetails?.School_Landline_number}</p>
+                            <p><span>Affiliation No:</span> {schoolDetails?.School_Affiliation_number}</p>
                         </div>
                         <div className={styles.detsRight}>
-                            <p><span>Type of School:</span> {schoolDetails?.typeofschool}</p>
-                            <p><span>ATL Lab:</span> {schoolDetails?.isATL ? "Yes" : "No"}</p>
-                            <p><span>Tinker Lab:</span> {schoolDetails?.isTinker ? "Yes" : "No"}</p>
-                            <p><span>PM Shri School:</span> {schoolDetails?.isPMShri ? "Yes" : "No"}</p>
-                            <p><span>Previous Interaction:</span> {schoolDetails?.isprevious ? "Yes" : "No"}</p>
-                            <p><span>Verified:</span> {schoolDetails?.isverified ? "Yes" : "No"}</p>
+                            <p><span>Type of School:</span> {schoolDetails?.School_IsPublic}</p>
+                            <p><span>ATL Lab:</span> {schoolDetails?.School_IsAtl}</p>
+                            <p><span>Tinker Lab:</span> {schoolDetails?.School_IsTinkering}</p>
+                            <p><span>PM Shri School:</span> {schoolDetails?.School_IsPmshri }</p>
+                            <p><span>Previous Interaction:</span> {schoolDetails?.School_IsPreviousEng }</p>
+                            <p><span>Verified:</span> {schoolDetails?.status === "2" ? "Yes" : "No"}</p>
                         </div>
                     </div>
                 </div>
