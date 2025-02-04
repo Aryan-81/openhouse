@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import ServicesSection from '@/components/ServicesSection';
 import HeroSection from '@/components/HeroSection';
 import styles from './home.module.css'; 
-import App from '@/components/KeypointCard';
+// import App from '@/components/KeypointCard';
 import Testimonials from '@/components/Testmonial';
 
 const Home = () => {
@@ -55,10 +55,19 @@ const Home = () => {
                     Additionally, students can engage in artistic, literary, and scientific activities, interact with experts, and witness cutting-edge innovations. The presence of esteemed dignitaries, including the Honourable Minister of Science and Technology, Dr. Jitendra Singh, makes this event an unparalleled opportunity for inspiration and learning.
                     Join us at Pragyaan and step into a world of creativity, knowledge, and discovery! 🚀</p>
             </section>
+            <section style={{width:'80%'}}>
+                <ServicesSection/>
+            </section>
+
             <section>
                 <Testimonials/>
                 <br />
             </section>
+            <section>
+                
+            </section>
+
+            <br /><br /><br /><br /><br />
 
         </>
     );
