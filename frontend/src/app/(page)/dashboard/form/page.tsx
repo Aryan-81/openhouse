@@ -1,294 +1,180 @@
 "use client";
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import React, { useState } from "react";
+import { useAuth } from "@/context/AuthContext"; // Import authentication context
+import styles from "./ProfileForm.module.css";
 
-const FormPage: React.FC = () => {
-    // State to manage form data
-    const [formData, setFormData] = useState({
-        name: '',
-        address: '',
-        contact: '',
-        district: '',
-        state: '',
-        affiliation_no: '',
-        email: '',
-        phone_no: '',
-        landline: '',
-        typeofschool: '',
-        isATL: '',
-        isTinker: '',
-        isPMShri: '',
-        isprevious: '',
+interface FormData {
+    name: string;
+    address: string;
+    district: string;
+    state: string;
+    affiliation_no: string;
+    email: string;
+    phone_no: string;
+    landline: string;
+    typeofschool: string;
+    isATL: boolean;
+    isTinker: boolean;
+    isPMShri: boolean;
+    isprevious: boolean;
+}
+const fieldLabels: Record<string, string> = {
+    isATL: "Has ATL?",
+    isTinker: "Has Tinkering Lab?",
+    isPMShri: "Is your school comes under PM Shri ?",
+    isprevious: "Was Previously Intercted?",
+};
+
+const ProfileForm: React.FC = () => {
+    const { token } = useAuth();
+    const [formData, setFormData] = useState<FormData>({
+        name: "",
+        address: "",
+        district: "",
+        state: "",
+        affiliation_no: "",
+        email: "",
+        phone_no: "",
+        landline: "",
+        typeofschool: "",
+        isATL: false,
+        isTinker: false,
+        isPMShri: false,
+        isprevious: false,
     });
 
-    const [scheduled_slot, setScheduledSlot] = useState({
-        date: '',
-        from_time: '',
-        to_time: '',
-    });
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+    const api = process.env.NEXT_PUBLIC_API_URL;
 
-    // Handle form input changes
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
+
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: ["isATL", "isTinker", "isPMShri", "isprevious"].includes(name) ? value === "yes" : value,
         });
     };
 
-    const handleSlotChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setScheduledSlot({
-            ...scheduled_slot,
-            [name]: value,
-        });
-    };
-
-    // Handle form submission
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
-        console.log('Scheduled Slot:', scheduled_slot);
-        alert('Form submitted successfully!');
-        // You can send the data to an API or redirect to the dashboard page
+        if (!token) {
+            setMessage({ type: "error", text: "Authentication failed. Please log in again." });
+            return;
+        }
+
+        setLoading(true);
+        setMessage(null);
+
+        try {
+            const response = await fetch(`${api}/school/update_profile`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `idToken ${token}`,
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.message || "Failed to update profile");
+
+            setMessage({ type: "success", text: "Profile updated successfully!" });
+        } catch (error) {
+            setMessage({ type: "error", text: (error as Error).message });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <div className="container mt-5">
-            <h1 className="text-center mb-4">School Registration Form</h1>
-            <form onSubmit={handleSubmit}>
-                {/* School Details Section */}
-                <div className="card mb-4 shadow-sm">
-                    <div className="card-header bg-primary text-white">
-                        <h5 className="card-title mb-0">School Details</h5>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Profile Form</h1>
+
+            {message && <div className={message.type === "success" ? styles.success : styles.error}>{message.text}</div>}
+
+            <form onSubmit={handleSubmit} className={styles.form}>
+                {/* Name */}
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Name:</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} className={styles.input} required />
+                </div>
+
+                {/* Address and District */}
+                <div className={styles.row}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Address:</label>
+                        <input type="text" name="address" value={formData.address} onChange={handleChange} className={styles.input} required />
                     </div>
-                    <div className="card-body">
-                        <div className="mb-3">
-                            <label htmlFor="name" className="form-label">
-                                School Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                className="form-control"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="address" className="form-label">
-                                Address
-                            </label>
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                className="form-control"
-                                value={formData.address}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="contact" className="form-label">
-                                Contact
-                            </label>
-                            <input
-                                type="text"
-                                id="contact"
-                                name="contact"
-                                className="form-control"
-                                value={formData.contact}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="district" className="form-label">
-                                District
-                            </label>
-                            <input
-                                type="text"
-                                id="district"
-                                name="district"
-                                className="form-control"
-                                value={formData.district}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="state" className="form-label">
-                                State
-                            </label>
-                            <input
-                                type="text"
-                                id="state"
-                                name="state"
-                                className="form-control"
-                                value={formData.state}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="affiliation_no" className="form-label">
-                                Affiliation Number
-                            </label>
-                            <input
-                                type="text"
-                                id="affiliation_no"
-                                name="affiliation_no"
-                                className="form-control"
-                                value={formData.affiliation_no}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="form-control"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="phone_no" className="form-label">
-                                Phone Number
-                            </label>
-                            <input
-                                type="text"
-                                id="phone_no"
-                                name="phone_no"
-                                className="form-control"
-                                value={formData.phone_no}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="landline" className="form-label">
-                                Landline
-                            </label>
-                            <input
-                                type="text"
-                                id="landline"
-                                name="landline"
-                                className="form-control"
-                                value={formData.landline}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="typeofschool" className="form-label">
-                                Type of School
-                            </label>
-                            <select
-                                id="typeofschool"
-                                name="typeofschool"
-                                className="form-select"
-                                value={formData.typeofschool}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select Type</option>
-                                <option value="Public">Public</option>
-                                <option value="Government">Government</option>
-                                <option value="Private">Private</option>
-                                <option value="Funded">Funded</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="isATL" className="form-label">
-                                ATL Lab
-                            </label>
-                            <select
-                                id="isATL"
-                                name="isATL"
-                                className="form-select"
-                                value={formData.isATL}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="isTinker" className="form-label">
-                                Tinker Lab
-                            </label>
-                            <select
-                                id="isTinker"
-                                name="isTinker"
-                                className="form-select"
-                                value={formData.isTinker}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="isPMShri" className="form-label">
-                                PM Shri School
-                            </label>
-                            <select
-                                id="isPMShri"
-                                name="isPMShri"
-                                className="form-select"
-                                value={formData.isPMShri}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="isprevious" className="form-label">
-                                Previous Interaction
-                            </label>
-                            <select
-                                id="isprevious"
-                                name="isprevious"
-                                className="form-select"
-                                value={formData.isprevious}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>District:</label>
+                        <input type="text" name="district" value={formData.district} onChange={handleChange} className={styles.input} required />
                     </div>
                 </div>
 
-                {/* Submit Button */}
-                <div className="text-center">
-                    <button type="submit" className="btn btn-primary btn-lg">
-                        Submit
-                    </button>
+                {/* Affiliation No. and State */}
+                <div className={styles.row}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Affiliation No:</label>
+                        <input type="text" name="affiliation_no" value={formData.affiliation_no} onChange={handleChange} className={styles.input} required />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>State:</label>
+                        <select name="state" value={formData.state} onChange={handleChange} className={styles.select} required>
+                            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                            <option value="Ladakh">Ladakh</option>
+                        </select>
+                    </div>
                 </div>
+
+                {/* Contact 1 and Landline */}
+                <div className={styles.row}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Phone No:</label>
+                        <input type="tel" name="phone_no" value={formData.phone_no} onChange={handleChange} className={styles.input} required />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Landline:</label>
+                        <input type="tel" name="landline" value={formData.landline} onChange={handleChange} className={styles.input} />
+                    </div>
+                </div>
+
+                {/* Email and Type of School */}
+                <div className={styles.row}>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Email:</label>
+                        <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} required />
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label className={styles.label}>Type of School:</label>
+                        <select name="typeofschool" value={formData.typeofschool} onChange={handleChange} className={styles.select} required>
+                            <option value="">Select Type</option>
+                            <option value="Goverment">Goverment</option>
+                            <option value="Public">Public</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* Additional Fields */}
+                {["isATL", "isTinker", "isPMShri", "isprevious"].map((field) => (
+                    <div className={styles.formGroup} key={field}>
+                        <label className={styles.label}>{fieldLabels[field]}</label>
+                        <select name={field} value={formData[field as keyof FormData] ? "yes" : "no"} onChange={handleChange} className={styles.select}>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                ))}
+
+
+                {/* Submit Button */}
+                <button type="submit" className={styles.button} disabled={loading}>
+                    {loading ? "Submitting..." : "Submit"}
+                </button>
             </form>
         </div>
     );
 };
 
-export default FormPage;
+export default ProfileForm;

@@ -26,9 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className='.light'>
         <AuthProvider>
           <Header />
+          <div style={{height:'60px'}}></div>
           {children}
           <Footer />
         </AuthProvider>

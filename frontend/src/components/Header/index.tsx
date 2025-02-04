@@ -51,18 +51,18 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <a href="#about" className={styles.navItem}>
+              <a href="/about" className={styles.navItem}>
                 About
               </a>
             </li>
             <li>
               <div className={styles.registerContainer}>
                 {token ? (
-                  <Link href='#' className={styles.registerButton} onClick={handleLogoutClick}>
+                  <Link href='/dashboard' className={styles.registerButton} onClick={handleLogoutClick}>
                     Dashboard
                   </Link>
                 ) : (
-                  <Link href='#' className={styles.registerButton} onClick={handleLoginClick}>
+                  <Link href='/login' className={styles.registerButton} onClick={handleLoginClick}>
                     Login
                   </Link>
                 )}

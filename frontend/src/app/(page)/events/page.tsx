@@ -4,7 +4,7 @@ import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './EventPage.css';
-
+import Link from "next/link";
 // Importing the image
 import photo from './photo.jpg';
 
@@ -174,7 +174,7 @@ const EventPage: React.FC = () => {
                         <p><strong>Location:</strong> {selectedEvent.Space_Location}</p>
                         <p><strong>Category:</strong> {selectedEvent.Category}</p>
                         {selectedEvent.Pre_Registered ? (
-                            <button className="register-button">Register</button>
+                            <Link href='/events/Regs' className="register-button" >Register</Link>
                         ) : (
                             <h3>Open for all</h3>
                         )}
