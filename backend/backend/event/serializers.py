@@ -16,6 +16,7 @@ class EventSerializer(serializers.Serializer):
     Number_Registered = serializers.IntegerField(default=0)
     Space_Location = serializers.CharField(max_length=10, required=False)
     Category=serializers.CharField(max_length=10,required=False)
+    image = serializers.ImageField(required=False)  # Add this line for image uploads
 
     def create(self, validated_data):
         return Event.objects.create(**validated_data)
@@ -34,6 +35,7 @@ class EventSerializer(serializers.Serializer):
         instance.Number_Registered = validated_data.get('Number_Registered', instance.Number_Registered)
         instance.Space_Location = validated_data.get('Space_Location', instance.Space_Location)
         instance.Category = validated_data.get('Category', instance.Category)
-
+        instance.image = validated_data.get('image', instance.image)  # Update image field
+        
         instance.save()
         return instance

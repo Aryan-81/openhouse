@@ -5,13 +5,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Event
 from .serializers import EventSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
 
 # Create your views here.
 
 # View for Event
 class EventView(APIView):
     permission_classes = [IsAuthenticated, IsEvent_head]  # Permissions for the event head
-     
+    parser_classes = (MultiPartParser, FormParser)
     def get(self, request):
         event_id = request.data.get('Event_id')# Retrieve event_id from query params
         
@@ -36,7 +37,7 @@ class EventView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 #Admin for all object 
 class AdminEvent(APIView):
-    permission_classes = [IsAuthenticated, IsAdmin]  # Only accessible by admin users
+    permission_classes = [IsAuthenticated]  # Only accessible by admin users
 
     def get(self, request):
         try:
@@ -56,7 +57,7 @@ class AdminEvent(APIView):
     
 #Admin for specific event
 class Admin_Event_Spec(APIView):
-    permission_classes = [IsAuthenticated, IsAdmin]  # Only accessible by admin users
+    permission_classes = [IsAuthenticated]  # Only accessible by admin users
 
     def get(self, request):
         try:

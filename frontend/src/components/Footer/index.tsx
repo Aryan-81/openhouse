@@ -14,9 +14,9 @@ const Footer = () => {
                     {/* About Section */}
                     <div className="col-md">
                         <div className={`${styles.ftcoFooterWidget} mb-4`}>
-                            <h2 className={styles.ftcoHeading2}>CSE</h2>
+                            <h2 className={styles.ftcoHeading2}>PRAGYAAN</h2>
                             <p className={styles.footerText}>
-                                The Department of CSE will create high-quality professionals in Computer Science & Engineering and foster leading-edge research to equip students to succeed and contribute to industry and society.
+                                 
                             </p>
                             <ul className={`${styles.ftcoFooterSocial} list-unstyled float-md-left float-lft mt-5`}>
                                 <li className="ftco-animate">
@@ -116,7 +116,7 @@ const Footer = () => {
                                             <span className={styles.icon}>
                                                 <FaPhone />
                                             </span>
-                                            <span className={styles.text}>+91 1233221123</span>
+                                            <span className={styles.text}>+91 9596917316</span>
                                         </a>
                                     </li>
                                     <li>
@@ -124,7 +124,7 @@ const Footer = () => {
                                             <span className={styles.icon}>
                                                 <FaEnvelope />
                                             </span>
-                                            <span className={styles.text}>iitjammu@gmail.com</span>
+                                            <span className={styles.text}>2022ucs0083@iitjammu.ac.in</span>
                                         </a>
                                     </li>
                                 </ul>

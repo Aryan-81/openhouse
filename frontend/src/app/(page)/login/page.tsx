@@ -1,43 +1,94 @@
 "use client";
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext"; // Import useAuth
+
+const api = process.env.NEXT_PUBLIC_API_URL;
 
 const LoginPage: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
-    const [otp, setOtp] = useState<string>('');
+    const router = useRouter();
+    const { setToken } = useAuth(); // Get setToken from context
+    const [email, setEmail] = useState<string>("");
+    const [otp, setOtp] = useState<string>("");
     const [showOtpField, setShowOtpField] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
-    const handleEmailSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Validate email (basic validation)
-        if (email.includes('@gmail.com')) {
-            setShowOtpField(true);
-            console.log('Email submitted:', email);
-            // Simulate sending OTP to the user's email
-            alert('OTP sent to your email!');
-        } else {
-            alert('Please enter a valid Gmail address.');
+    const sendOTP = async (email: string) => {
+        if (!api) {
+            console.error("API URL is not defined.");
+            return;
+        }
+
+        const mailApi = `${api}/mail/send/`;
+
+        try {
+            setLoading(true);
+            const response = await fetch(mailApi, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.message === "OTP sent successfully") {
+                setShowOtpField(true);
+            } else {
+                alert(result.message || "Failed to send OTP.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
-    const handleOtpSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Validate OTP (basic validation)
-        if (otp.length === 6) {
-            console.log('OTP submitted:', otp);
-            alert('Login successful!');
-            // Redirect or perform further actions
-        } else {
-            alert('Please enter a valid 6-digit OTP.');
+    const submitOTP = async () => {
+        if (!api) {
+            console.error("API URL is not defined.");
+            return;
+        }
+
+        const authApi = `${api}/auth/validate/`;
+        let role = email.endsWith("iitjammu.ac.in") ? "event_head" : "school";
+
+        try {
+            setLoading(true);
+            const response = await fetch(authApi, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, otp, role_id: role }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.idToken) {
+                setToken(result.idToken); // Store token in context
+                router.push("/");
+            } else {
+                alert(result.message || "Login failed. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="container d-flex justify-content-center align-items-center vh-100">
-            <div className="card shadow-lg p-4" style={{ width: '400px' }}>
+            <div className="card shadow-lg p-4" style={{ width: "400px" }}>
                 <h1 className="text-center mb-4">Pragyaan</h1>
                 {!showOtpField ? (
-                    <form onSubmit={handleEmailSubmit}>
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            sendOTP(email);
+                        }}
+                    >
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">
                                 Enter your Gmail:
@@ -52,12 +103,17 @@ const LoginPage: React.FC = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">
-                            Submit
+                        <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                            {loading ? "Sending OTP..." : "Submit"}
                         </button>
                     </form>
                 ) : (
-                    <form onSubmit={handleOtpSubmit}>
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            submitOTP();
+                        }}
+                    >
                         <div className="mb-3">
                             <label htmlFor="otp" className="form-label">
                                 Enter OTP:
@@ -73,8 +129,8 @@ const LoginPage: React.FC = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-success w-100">
-                            Login
+                        <button type="submit" className="btn btn-success w-100" disabled={otp.length !== 6 || loading}>
+                            {loading ? "Verifying..." : "Login"}
                         </button>
                     </form>
                 )}

@@ -24,6 +24,7 @@ class SchProfile(APIView):
             return Response({'msg': 'fail to fetch'})
 
     def post(self, request):
+        print(request.data)
         try:
             # Check if the profile already exists
             user_profile = Sch_profile.objects.get(School_id=request.user)

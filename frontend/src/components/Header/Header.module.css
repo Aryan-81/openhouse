@@ -3,6 +3,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  max-height: 60px;
   background: var(--primary-clr); /* Updated to use primary color */
   color: white;
   padding: 5px 20px; /* Adjusted for better padding */
@@ -49,6 +50,11 @@
   height: auto;
   border-radius: 50%;
   margin-right: 10px;
+}
+.logo{
+  object-fit: cover; 
+  transform: scale(2);
+  margin: 0 16px;
 }
 
 /* Menu Button (Mobile) */
@@ -106,6 +112,19 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    
+    color: white;
+  }
+  .logo{
+    height: 40px !important;
+    width: 40px !important ;
+    transform: scale(2);
+    margin: 0 12px;
+  }
   .menuButton {
     display: block;
   }
