@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useAuth } from "@/context/AuthContext";
 import styles from "./dashboard.module.css";
 import Link from "next/link";
 
@@ -22,41 +21,25 @@ interface SchoolDetails {
     status: string;
 }
 
+const sampleSchoolDetails: SchoolDetails = {
+    School_Name: "Sample High School",
+    School_Address: "123 Sample St, Sample City",
+    School_District: "Sample District",
+    School_State: "Sample State",
+    School_Affiliation_number: "123456",
+    School_Zipcode: "123456",
+    School_Phone_number: "123-456-7890",
+    School_Landline_number: "098-765-4321",
+    School_IsPublic: "Yes",
+    School_IsAtl: "No",
+    School_IsTinkering: "Yes",
+    School_IsPmshri: "No",
+    School_IsPreviousEng: "Yes",
+    status: "2",
+};
+
 const DashboardPage: React.FC = () => {
-    const { token } = useAuth();
-    const [schoolDetails, setSchoolDetails] = useState<SchoolDetails | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const api = process.env.NEXT_PUBLIC_API_URL;
-
-    useEffect(() => {
-        if (!token) return;
-
-        const fetchSchoolProfile = async () => {
-            try {
-                const response = await fetch(`${api}/school/sch_profile`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `idToken ${token}`,
-                    },
-                });
-                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
-                const data = await response.json();
-                setSchoolDetails(data.profile);
-            } catch (error) {
-                console.error("Error fetching school profile:", error);
-                setSchoolDetails(null);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchSchoolProfile();
-    }, [token]);
-
-    if (loading) return <div className="container mt-5 text-center">Loading...</div>;
-    if (!schoolDetails) return <div className="container mt-5 text-center text-danger">Failed to load school details.</div>;
+    const [schoolDetails] = useState<SchoolDetails>(sampleSchoolDetails);
 
     return (
         <div className={styles.mainContainer}>
@@ -75,11 +58,11 @@ const DashboardPage: React.FC = () => {
                 <div className={styles.dashboardContent}>
                     <div className={styles.eventdets}>
                         <div className={styles.card}>
-                            <h4>XX</h4>
+                            <h4>05</h4>
                             <p>Events Registered</p>
                         </div>
                         <div className={styles.card}>
-                            <h4>XX</h4>
+                            <h4>45</h4>
                             <p>Students Registered</p>
                         </div>
                     </div>

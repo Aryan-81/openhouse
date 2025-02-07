@@ -33,6 +33,72 @@
 .about p:hover {
     color: #212529;
 }
+.whyAttend {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    margin: 5rem auto;
+    border-radius: 10px;
+}
+
+.whyAttend h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.whyAttend ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.whyAttend li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #495057;
+    text-align: justify;
+    position: relative;
+    padding-left: 1.5rem;
+    animation: slideIn 1s ease-in-out;
+}
+
+.whyAttend li::before {
+    content: '\2022'; /* Bullet point */
+    color: #007bff;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.whyAttend li:hover {
+    color: #212529;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 
 @keyframes fadeIn {
     from {

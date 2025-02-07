@@ -15,19 +15,19 @@ interface Testimonial {
 const testimonialList: Testimonial[] = [
     {
         photo:
-            "https://cdn.easyfrontend.com/pictures/testimonial/testimonial_19.png",
-        name: "John Coates",
-        position: "Content Writer",
-        from: "UK",
+            "/direc.png",
+        name: "Dr. Manoj Singh Gaur",
+        position: "Founding Director of IIT Jammu",
+        from: "India",
         content:
             '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus magni tempore provident? Quaerat, dicta saepe praesentium eaque nobis corrupti aut, quibusdam provident consequatur."',
     },
     {
         photo:
-            "https://cdn.easyfrontend.com/pictures/testimonial/testimonial_19.png",
-        name: "John Coates",
-        position: "Content Writer",
-        from: "UK",
+            "/direc.png",
+        name: "Dr. Manoj Singh Gaur",
+        position: "Founding Director of IIT Jammu",
+        from: "India",
         content:
             '"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus magni tempore provident? Quaerat, dicta saepe praesentium eaque nobis corrupti aut, quibusdam provident consequatur."',
     },
@@ -49,6 +49,7 @@ const Testimonial19: React.FC = () => {
     return (
         <section className="ezy__testimonial19 light">
             <Container className={styles.ctr}>
+                <h1 style={{position:'absolute',left:'10%'}}>Message</h1>
                 <Row className="justify-content-center align-items-center position-relative">
                     <Col md={6} className="position-relative">
                         <div className="ezy__testimonial19-card">
