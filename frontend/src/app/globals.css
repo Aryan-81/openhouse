@@ -1,7 +1,7 @@
 :root {
   --background-clr: #ffffff;
   --bk-ld:#f8f9fa;
-  --foreground-clr: #171717;
+  --foreground-clr: hsl(0, 0%, 9%);
   --primary-clr: #003f87; /* Original dark blue */
   --secondary-clr: #00c0ef; /* Original cyan */
   --secondary-sd: #009ac0;
