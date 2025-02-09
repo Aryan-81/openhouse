@@ -26,11 +26,16 @@ const Header: React.FC = () => {
     router.push("/dashboard"); // Redirect to homepage after logout
   };
 
+  const closeNavMenu = () => {
+    setIsNavOpen(false); // Close the navigation menu
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
           <Image src="/logo.svg" alt="Logo" className={styles.logo} width={50} height={50} />
+
           PRAGYAAN
         </Link>
 
@@ -41,12 +46,12 @@ const Header: React.FC = () => {
         <div className={`${styles.navLinks} ${isNavOpen ? styles.show : ""}`}>
           <ul>
             <li>
-              <Link href="/" className={styles.navItem}>
+              <Link href="/" className={styles.navItem} onClick={closeNavMenu}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/events" className={styles.navItem}>
+              <Link href="/events" className={styles.navItem} onClick={closeNavMenu}>
                 Events
               </Link>
             </li>

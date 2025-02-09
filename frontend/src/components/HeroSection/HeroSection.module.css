@@ -10,7 +10,7 @@
     color: white;
     text-align: center;
     padding: 20px;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 .overlay {
