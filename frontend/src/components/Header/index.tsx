@@ -2,29 +2,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./Header.module.css";
-import { useRouter } from "next/navigation";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from "next/image";
-import { useAuth } from "@/context/AuthContext"; 
 
 const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { token, logout } = useAuth(); // Get token and logout function
-  const router = useRouter();
 
   const toggleNav = () => {
     setIsNavOpen((prev) => !prev);
   };
 
-  const handleLoginClick = () => {
-    router.push("/login");
-  };
 
-  const handleLogoutClick = () => {
-    // logout(); // Clear token
-
-    router.push("/dashboard"); // Redirect to homepage after logout
-  };
 
   const closeNavMenu = () => {
     setIsNavOpen(false); // Close the navigation menu
@@ -59,19 +47,6 @@ const Header: React.FC = () => {
               <a href="/about" className={styles.navItem}>
                 About
               </a>
-            </li>
-            <li>
-              <div className={styles.registerContainer}>
-                {token ? (
-                  <Link href='/dashboard' className={styles.registerButton} onClick={handleLogoutClick}>
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link href='/login' className={styles.registerButton} onClick={handleLoginClick}>
-                    Login
-                  </Link>
-                )}
-              </div>
             </li>
           </ul>
         </div>

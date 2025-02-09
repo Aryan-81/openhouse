@@ -1,7 +1,6 @@
 "use client"
 import Link from 'next/link';
-import styles from './Footer.module.css'; // Import the CSS module
-import { useEffect } from 'react';
+import styles from './Footer.module.css';
 import { FaYoutube, FaFacebook, FaInstagram, FaHeart, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css'
 

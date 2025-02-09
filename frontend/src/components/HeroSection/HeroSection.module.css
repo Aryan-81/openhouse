@@ -45,7 +45,10 @@
     font-size: 1.5rem;
     font-weight: 400;
 }
-
+.para{
+    
+    margin: 0 auto;
+}
 /* Countdown Section */
 .countdownSection {
     margin-bottom: 2rem;
@@ -94,6 +97,7 @@
 
 /* Responsive Styles */
 @media (min-width: 768px) {
+    
     .mainTitle {
         font-size: 4rem;
     }
@@ -107,7 +111,7 @@
     }
 
     .countdown {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .eventLinks {
@@ -132,14 +136,16 @@
     }
 
     .countdown {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 .countdownSection {
     margin-bottom: 2rem;
+    
 }
 
 .countdownText {
+    text-align: center;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
@@ -161,12 +167,20 @@
 /* Responsive Styles */
 @media (min-width: 768px) {
     .countdown {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 }
 
 @media (min-width: 1024px) {
+    .heroSection{
+        text-align: left;
+        padding: 90px;
+    }
+    .para{
+        margin: 0;
+        width: 60%;
+    }
     .countdown {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }

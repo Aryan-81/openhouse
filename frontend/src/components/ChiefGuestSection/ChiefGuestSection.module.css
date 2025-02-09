@@ -1,66 +1,78 @@
-.chiefGuestSection {
-    padding: 4rem 0;
-    background-color: #f9f9f9;
-    text-align: center;
+.section {
+    padding: 3rem 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 56rem;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1.5rem;
+    text-align: center;
 }
 
-.sectionTitle {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
+.title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
 }
 
-.guestInfo {
+.card {
+    background-color: #fcfcfcda;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
-.guestImageContainer {
-    width: 300px;
-    height: 300px;
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+.image {
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #007bff;
-    position: relative; /* Required for layout="fill" */
-}
-
-.guestImage {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.guestDetails {
-    max-width: 600px;
+.details {
     text-align: left;
 }
 
-.guestName {
-    font-size: 2rem;
-    color: #007bff;
+.name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.role {
+    font-size: 1.125rem;
+    color: #4b5563;
+}
+
+.description {
+    margin-top: 0.75rem;
+    color: #374151;
+}
+
+.highlights {
+    margin-top: 1rem;
+    color: #374151;
+    list-style: none;
+    padding: 0;
+}
+
+.highlights li {
     margin-bottom: 0.5rem;
 }
 
-.guestDesignation {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.6;
-    margin: 0 auto;
-}
-@media (max-width: 768px) {
-    .guestName {
-        text-align: center;
-    }
-    .guestDesignation{
-        text-align: center;
-    }
+.highlights li::before {
+    content: "✅";
+    margin-right: 0.5rem;
 }
