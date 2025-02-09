@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FaRobot, FaUserGraduate, FaLightbulb, FaChalkboardTeacher } from "react-icons/fa";
+import { FaRobot, FaUserGraduate, FaLightbulb } from "react-icons/fa";
 import Image from "next/image";
 import styles from "./AboutPage.module.css";
 

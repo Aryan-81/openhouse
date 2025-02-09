@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaRobot, FaPalette, FaBook, FaLightbulb, FaFlask, FaUsers } from "react-icons/fa";
 import Image from "next/image";
@@ -206,7 +205,6 @@ export default function EventPage() {
   const [events] = useState<Event[]>(sampleEvents);
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
-  const pathname = usePathname();
   const categories = Array.from(new Set(events.map((event) => event.Category)));
 
   const handleViewMore = (event: Event) => {

@@ -19,10 +19,10 @@ export default function TestimonialSection() {
                     <FaQuoteLeft className={styles.quoteIcon} />
 
                     <p className={styles.testimonialText}>
-                        "Pragyaan is not just an event; it is a vision to bridge the gap between school education and real-world technology.
+                        Pragyaan is not just an event; it is a vision to bridge the gap between school education and real-world technology.
                         Through hands-on learning and STEAM-driven experiences, we aim to inspire the next generation of innovators
                         and critical thinkers. IIT Jammu is proud to host this initiative, bringing together students, educators, and
-                        industry experts to create a transformative learning experience."
+                        industry experts to create a transformative learning experience.
                     </p>
 
                     <FaQuoteRight className={styles.quoteIcon} />
