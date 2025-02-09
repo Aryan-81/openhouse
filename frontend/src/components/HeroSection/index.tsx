@@ -45,7 +45,7 @@ const HeroSection = () => {
     return (
         <section 
             className={styles.heroSection} 
-            style={{ backgroundImage: "url('/homebg.jpeg')" }}
+            style={{ backgroundImage: "url('/bk.jpg')" }}
             aria-label="Hero Section"
         >
             <div className={styles.overlay}></div>
