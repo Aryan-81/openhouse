@@ -19,11 +19,7 @@ const alexBrush = Alex_Brush({
   display: 'swap',
 });
 
-const bebasNeue = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-})
+
 
 
 
