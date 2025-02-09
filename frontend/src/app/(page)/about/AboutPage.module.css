@@ -1,0 +1,215 @@
+.page {
+  padding: 3rem 0;
+  background-color: #f3f4f6;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.intro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.introTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.introDescription {
+  font-size: 1.125rem;
+  color: #4b5563;
+  margin-top: 1rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .intro {
+    text-align:justify;
+  }
+  .introDescription{
+    max-width: none;
+    width: 80%;
+    margin-left: 0;
+  }
+}
+
+
+.missionVision {
+  margin-bottom: 3rem;
+}
+
+.missionVisionTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cardList {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+  color: #4b5563;
+}
+
+.cardList li {
+  margin-bottom: 0.5rem;
+}
+
+.team {
+  margin-bottom: 3rem;
+}
+
+.teamTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+}
+
+.teamSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.teamGrid {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.teamCard {
+  min-width: 100px;
+  aspect-ratio: 1;
+  background-color: #ffffff;
+  padding: .5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.teamImage {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.teamName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.teamRole {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #4b5563;
+}
+@media (min-width: 768px) {
+  .teamCard {
+    min-width: 250px;
+  }
+  .teamImage{
+    margin-top: 10px;
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+.whyJoin {
+  margin-bottom: 3rem;
+}
+
+.whyJoinTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+}
+
+.whyJoinGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .whyJoinGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.whyJoinCard {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whyJoinIcon {
+  font-size: 3rem;
+}
+
+.whyJoinCardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.whyJoinCardDescription {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-top: 0.5rem;
+}
