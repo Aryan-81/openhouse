@@ -54,7 +54,9 @@ const HeroSection = () => {
                 {/* Main Title and Subtitle */}
                 <div className={styles.heading}>
                     <h1 className={styles.mainTitle}>Pragyaan</h1>
-                    <h2 className={styles.subtitle}>Open Day Outreach Program</h2>
+                    <h2 className={styles.subtitle}>Ignite Curiosity, Inspire Innovation!</h2>
+                    <p className={styles.para}>A unique Open Day at IIT Jammu, bringing together students, educators, and industry leaders to explore the future of education, technology, and creativity.</p>
+                    
                 </div>
 
                 {/* Countdown Section */}

@@ -1,0 +1,82 @@
+.section {
+    padding: 3rem 0;
+}
+
+.container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icon {
+    font-size: 2.25rem;
+}
+
+.iconBlue {
+    color: #3b82f6;
+}
+
+.iconGreen {
+    color: #10b981;
+}
+
+.iconYellow {
+    color: #eab308;
+}
+
+.iconRed {
+    color: #ef4444;
+}
+
+.iconPurple {
+    color: #8b5cf6;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-top: 1rem;
+}
+
+.cardDescription {
+    color: #374151;
+    margin-top: 0.5rem;
+}

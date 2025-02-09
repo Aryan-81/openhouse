@@ -1,3 +1,28 @@
+.sec {
+    width: 95%;
+    margin: 0 auto;
+}
+
+
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .highlights{
+        font-size: 2rem;
+        width: 100% !important;
+        max-width: 1440px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sec{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .highlights{
+        font-size: 3rem;
+    }
+}
 .about {
     padding: 2rem;
     background-color: #f8f9fa;
