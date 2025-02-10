@@ -22,8 +22,10 @@ export default function KeyAttractions() {
                             className={styles.card}
                         >
                             {item.icon}
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
+                            <div className={styles.text}>
+                                <h3 className={styles.cardTitle}>{item.title}</h3>
+                                <p className={styles.cardDescription}>{item.description}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

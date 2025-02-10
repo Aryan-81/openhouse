@@ -5,10 +5,13 @@ import HighlightsSection from '@/components/Highlights';
 // import Testimonials from '@/components/Testmonial';
 import ChiefGuestSection from '@/components/ChiefGuestSection';
 import KeyAttractions from '@/components/KeyAttractions';
+import { relative } from 'path';
 
 const Home = () => {
     return (
-        <>
+        <><div style={{position:'relative'}}>
+
+        
             <HeroSection />
 
             <section className={`${styles.sec} ${styles.highlights}`}>
@@ -49,7 +52,7 @@ const Home = () => {
             </section>
 
             <br /><br /><br /><br /><br />
-
+            </div>
         </>
     );
 };

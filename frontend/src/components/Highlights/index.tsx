@@ -1,4 +1,3 @@
-import { FaUsers, FaSchool, FaChalkboardTeacher, FaBoxOpen, FaLightbulb } from "react-icons/fa";
 import Image from "next/image";
 import styles from "./HighlightsSection.module.css";
 
