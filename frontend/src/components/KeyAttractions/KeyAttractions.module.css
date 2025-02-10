@@ -30,12 +30,14 @@
 
 @media (min-width: 1024px) {
     .grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 2fr);
     }
 }
 
 .card {
-    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    background-color: #12172993;
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -46,7 +48,12 @@
 }
 
 .icon {
-    font-size: 2.25rem;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* transform: translate(-50%,-50%); */
+    font-size: 1.875rem;
+    z-index: -1;
 }
 
 .iconBlue {
@@ -72,11 +79,11 @@
 .cardTitle {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #111827;
+    color: #ecf2fd;
     margin-top: 1rem;
 }
 
 .cardDescription {
-    color: #374151;
+    color: #e6f0ff;
     margin-top: 0.5rem;
 }
