@@ -1,32 +1,82 @@
 .page {
-    padding: 3rem 0;
-    background-color: #f3f4f6;
+    position: relative;
 }
 
-.container {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+.header {
+    position: relative;
+    height: 40vh;
+    width: 100vw;
+    overflow: hidden;
 }
-
+.vid {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
 .overview {
-    text-align: center;
-    margin-bottom: 3rem;
+    padding: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #131921a2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .overviewTitle {
     font-size: 2.25rem;
     font-weight: 700;
-    color: #1f2937;
+    color: #f5f5f5;
+    text-align: center;
 }
-
 .overviewDescription {
     font-size: 1.125rem;
-    color: #4b5563;
+    color: #f5f5f5;
     margin-top: 1rem;
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
+    width: 93%;
+}
+
+@media (max-width:368px) {
+    .overviewDescription {
+        font-size: .9rem;
+    }
+
+    .header {
+        height: 45vh;
+    }
+}
+
+@media (min-width: 768px) {
+    .overviewDescription {
+        max-width: none;
+        width: 80%;
+        margin-left: 0;
+    }
+    .overviewTitle{
+        text-align: left;
+    }
+
+    .header {
+        height: 30vh;
+    }
+
+}
+
+.container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
 }
 
 .categorySection {
@@ -134,7 +184,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     z-index: 1001;
     background-color: #ffffff;
     padding: 1.5rem;
