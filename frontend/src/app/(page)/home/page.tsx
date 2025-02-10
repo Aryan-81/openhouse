@@ -2,7 +2,7 @@
 import HeroSection from '@/components/HeroSection';
 import styles from './home.module.css';
 import HighlightsSection from '@/components/Highlights';
-import Testimonials from '@/components/Testmonial';
+// import Testimonials from '@/components/Testmonial';
 import ChiefGuestSection from '@/components/ChiefGuestSection';
 import KeyAttractions from '@/components/KeyAttractions';
 
@@ -41,7 +41,7 @@ const Home = () => {
             </section>
 
             <section>
-                <Testimonials />
+                {/* <Testimonials /> */}
                 <br />
             </section>
             <section>
