@@ -1,13 +1,12 @@
-import { FaUsers, FaSchool, FaChalkboardTeacher, FaBoxOpen, FaLightbulb } from "react-icons/fa";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import styles from "./HighlightsSection.module.css";
 
 const highlights = [
-    { icon: <FaUsers className={`${styles.icon} ${styles.iconBlue}`} />, text: "Attended by 4000+ Students" },
-    { icon: <FaSchool className={`${styles.icon} ${styles.iconGreen}`} />, text: "Joined by 100+ Schools" },
-    { icon: <FaChalkboardTeacher className={`${styles.icon} ${styles.iconYellow}`} />, text: "Principal’s Conclave" },
-    { icon: <FaBoxOpen className={`${styles.icon} ${styles.iconRed}`} />, text: "500+ Items on 100+ Stalls" },
-    { icon: <FaLightbulb className={`${styles.icon} ${styles.iconPurple}`} />, text: "Experience the power of STEAM" },
+    { icon: <Image src={'/highlights/sch.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="School Highlights" />, text: "Attended by 4000+ Students" },
+    { icon: <Image src={'/highlights/stm.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="School Highlights" />, text: "Experience the power of STEAM" },
+    { icon: <Image src={'/highlights/cls.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="School Highlights" />, text: "Joined by 100+ Schools" },
+    { icon: <Image src={'/highlights/prs.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="School Highlights" />, text: "Principal’s Conclave" },
+    { icon: <Image src={'/highlights/tech.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="School Highlights" />, text: "500+ Items on 100+ Stalls" },
 ];
 
 export default function HighlightsSection() {
@@ -17,17 +16,10 @@ export default function HighlightsSection() {
                 {/* <h2 className={styles.title}>🚀 Event Highlights</h2> */}
                 <div className={styles.grid}>
                     {highlights.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            className={styles.card}
-                            whileHover={{ scale: 1.05 }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                        >
+                        <div key={index} className={styles.card}>
                             {item.icon}
                             <p className={styles.text}>{item.text}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

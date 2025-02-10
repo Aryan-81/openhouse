@@ -6,42 +6,48 @@ import styles from "./AboutPage.module.css";
 
 const students = [
   { name: "Ashutosh Vishwakarma", role: "Event Coordinator", image: '/unknown.png' },
-  { name: "Nipun Singh", role: "Hospitality", image: '/unknown.png'  },
-  { name: "Aryan Sheel", role: "Technical", image: '/unknown.png'  },
-  { name: "Raghav Jaiman", role: "Non-Technical", image: '/unknown.png'  },
-  { name: "Vaishnavi", role: "Non-Technical", image: '/unknown.png'  },
-  { name: "Aryan Raj", role: "Web-Dev", image: '/unknown.png'  },
-  { name: "Rahul Kumar", role: "Public Relations", image: '/unknown.png'  },
-  { name: "Vishal Kumar", role: "Security", image: '/unknown.png'  },
-  { name: "Yash Faujdar", role: "Coverage", image: '/unknown.png'  },
-  { name: "Devesh Sharma", role: "Design", image: '/unknown.png'  },
-  { name: "Vibhu", role: "Infrastructure", image: '/unknown.png'  },
-  { name: "Vivek", role: "Infrastructure", image: '/unknown.png'  },
+  { name: "Nipun Singh", role: "Hospitality", image: '/unknown.png' },
+  { name: "Aryan Sheel", role: "Technical", image: '/unknown.png' },
+  { name: "Raghav Jaiman", role: "Non-Technical", image: '/unknown.png' },
+  { name: "Vaishnavi", role: "Non-Technical", image: '/unknown.png' },
+  { name: "Devesh Sharma", role: "Design", image: '/unknown.png' },
+  { name: "Aryan Raj", role: "Web-Dev", image: '/unknown.png' },
+  { name: "Vibhu", role: "Infrastructure", image: '/unknown.png' },
+  { name: "Vivek", role: "Infrastructure", image: '/unknown.png' },
+  { name: "Rahul Kumar", role: "Public Relations", image: '/unknown.png' },
+  { name: "Vishal Kumar", role: "Security", image: '/unknown.png' },
+  { name: "Yash Faujdar", role: "Coverage", image: '/unknown.png' },
 ];
 
 const faculty = [
-  { name: "Dr. Vijay Pal", role: "Event Chairperson", image: '/unknown.png'  },
-  { name: "- -", role: "Faculty Advisor", image: '/unknown.png'  },
+  { name: "Dr. Vijay Pal", role: "Event Chairperson", image: '/unknown.png' },
+  { name: "- -", role: "Faculty Advisor", image: '/unknown.png' },
 ];
 
 export default function AboutPage() {
   return (
     <section className={styles.page}>
-      <div className={styles.container}>
+      <header className={styles.header}>
+        <video
+          autoPlay loop muted playsInline
+          src="/vid/abt.mp4"
+          className={styles.vid}
+        />
         {/* Introduction to Pragyaan */}
         <div className={styles.intro}>
           {/* <h2 className={styles.introTitle}>📢 Introduction to Pragyaan</h2> */}
           <p className={styles.introDescription}>
             Pragyaan is an initiative by <strong>IIT Jammu</strong> to create an interactive learning experience
             for school students, educators, and industry professionals. This Open Day event fosters <strong>curiosity,
-            innovation, and collaboration</strong> by showcasing the latest advancements in <strong>STEAM</strong>.
+              innovation, and collaboration</strong> by showcasing the latest advancements in <strong>STEAM</strong>.
           </p>
           <p className={styles.introDescription}>
             Through <strong>live exhibits, hands-on activities, and expert mentorship</strong>, Pragyaan bridges the gap between
             school education and real-world applications.
           </p>
         </div>
-
+      </header>
+      <div className={styles.container}>
         {/* Mission & Vision */}
         <div className={styles.missionVision}>
           <h2 className={styles.missionVisionTitle}>🎯 Our Mission & Vision</h2>
@@ -63,7 +69,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Why Join Us? */}
         <div className={styles.whyJoin}>
           <h2 className={styles.whyJoinTitle}>💡 Why Join Us?</h2>
@@ -71,7 +77,7 @@ export default function AboutPage() {
             <div className={styles.whyJoinCard}>
               <FaRobot className={`${styles.whyJoinIcon} text-blue-500`} />
               <h3 className={styles.whyJoinCardTitle}>Experience STEAM</h3>
-              <p className={styles.whyJoinCardDescription}>AI, Robotics, AR/VR, Drones, and more!</p>
+              <p className={styles.whyJoinCardDescription}>AI, Robotics, AR/VR, Drones, Elocution and more!</p>
             </div>
             <div className={styles.whyJoinCard}>
               <FaUserGraduate className={`${styles.whyJoinIcon} text-green-500`} />
@@ -115,7 +121,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        
+
       </div>
     </section>
   );

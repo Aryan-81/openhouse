@@ -1,5 +1,6 @@
 .highlightsSection {
     padding: 3rem 0;
+    position: relative;
 }
 
 .container {
@@ -7,19 +8,21 @@
     margin: 0 auto;
     padding: 0 1.5rem;
     text-align: center;
+    position: relative;
 }
 
 .title {
     font-size: 1.875rem;
     font-weight: 700;
     color: #1f2937;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    position: relative;
 }
 
 @media (min-width: 640px) {
@@ -39,19 +42,26 @@
 }
 
 .card {
-    background-color: #ffffff;
-    padding: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    background-color: #00000086;
     border-radius: 1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    justify-content: center
 
 }
 
 .icon {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* transform: translate(-50%,-50%); */
     font-size: 1.875rem;
+
 }
 
 .iconBlue {
@@ -75,6 +85,13 @@
 }
 
 .text {
-    color: #374151;
+    display: flex;
+    width: 100%;
+    color: #ffffff;
+    padding: 1.5rem;
+    margin: 0;
     font-weight: 600;
+    z-index: 1;
+    background-color: #00000086;
+    
 }

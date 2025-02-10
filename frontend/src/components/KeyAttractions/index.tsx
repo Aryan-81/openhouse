@@ -1,13 +1,13 @@
-import { FaLightbulb, FaRobot, FaPalette, FaUserGraduate, FaComments } from "react-icons/fa";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import styles from "./KeyAttractions.module.css";
 
 const attractions = [
-    { icon: <FaLightbulb className={`${styles.icon} ${styles.iconBlue}`} />, title: "Innovation Zone", description: "Industry partners showcasing STEAM innovations." },
-    { icon: <FaRobot className={`${styles.icon} ${styles.iconGreen}`} />, title: "STEM Zone", description: "Hands-on experiments with AI, Drones, and AR/VR." },
-    { icon: <FaPalette className={`${styles.icon} ${styles.iconYellow}`} />, title: "Arts Zone", description: "Painting, Elocution, Documentary Shows, Jigsaw Puzzles." },
-    { icon: <FaUserGraduate className={`${styles.icon} ${styles.iconRed}`} />, title: "Student Zone", description: "Project exhibitions by young innovators." },
-    { icon: <FaComments className={`${styles.icon} ${styles.iconPurple}`} />, title: "IITian Interaction", description: "Q&A with IIT students for career mentorship." },
+    { icon: <Image src={'/keyatt/ino.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "Innovation Zone", description: "Industry partners showcasing STEAM innovations." },
+    { icon: <Image src={'/keyatt/stm.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "STEM Zone", description: "Hands-on experiments with AI, Drones, AR/VR and more." },
+    { icon: <Image src={'/keyatt/art.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "Arts Zone", description: "Elocution, Documentary Shows, IITian Intraction and more." },
+    { icon: <Image src={'/keyatt/std.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "Student Zone", description: "Project exhibitions by young innovators." },
+    { icon: <Image src={'/keyatt/bok.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "Book Zone", description: "Browse books on science, technology, arts, and literature." },
+    { icon: <Image src={'/keyatt/tch.png'} layout="fill" objectFit="cover" className={`${styles.icon} ${styles.iconBlue}`} alt="keyAttraction" />, title: "Science Zone", description: "Explore innovation through interactive stalls and IIT Jammu's labs." },
 ];
 
 export default function KeyAttractions() {
@@ -17,18 +17,16 @@ export default function KeyAttractions() {
                 <h2 className={styles.title}>🎯 Key Attractions</h2>
                 <div className={styles.grid}>
                     {attractions.map((item, index) => (
-                        <motion.div
+                        <div
                             key={index}
                             className={styles.card}
-                            whileHover={{ scale: 1.05 }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
                         >
                             {item.icon}
-                            <h3 className={styles.cardTitle}>{item.title}</h3>
-                            <p className={styles.cardDescription}>{item.description}</p>
-                        </motion.div>
+                            <div className={styles.text}>
+                                <h3 className={styles.cardTitle}>{item.title}</h3>
+                                <p className={styles.cardDescription}>{item.description}</p>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>

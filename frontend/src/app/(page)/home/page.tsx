@@ -8,7 +8,9 @@ import KeyAttractions from '@/components/KeyAttractions';
 
 const Home = () => {
     return (
-        <>
+        <><div style={{position:'relative'}}>
+
+        
             <HeroSection />
 
             <section className={`${styles.sec} ${styles.highlights}`}>
@@ -49,7 +51,7 @@ const Home = () => {
             </section>
 
             <br /><br /><br /><br /><br />
-
+            </div>
         </>
     );
 };
