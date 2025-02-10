@@ -1,5 +1,4 @@
 "use client"
-import Link from 'next/link';
 import styles from './Footer.module.css';
 import { FaYoutube, FaFacebook, FaInstagram, FaHeart, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -37,58 +36,9 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Events Section */}
-                    <div className="col-md">
-                        <div className={`${styles.ftcoFooterWidget} mb-4 ml-md-5`}>
-                            <h2 className={styles.ftcoHeading2}>Events</h2>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <a href="/events" className={`${styles.footerLink} py-2 d-block`}>
-                                        Technical
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/events" className={`${styles.footerLink} py-2 d-block`}>
-                                        Gaming
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/events" className={`${styles.footerLink} py-2 d-block`}>
-                                        On Stage
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/events" className={`${styles.footerLink} py-2 d-block`}>
-                                        Off Stage
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
 
-                    {/* Customer Support Section */}
-                    <div className="col-md">
-                        <div className={`${styles.ftcoFooterWidget} mb-4`}>
-                            <h2 className={styles.ftcoHeading2}>Customer Support</h2>
-                            <ul className="list-unstyled">
-                                <li>
-                                    <Link href="/registration" className={`${styles.footerLink} py-2 d-block`}>
-                                        Registration
-                                    </Link>
-                                </li>
-                                <li>
-                                    <a href="/events" className={`${styles.footerLink} py-2 d-block`}>
-                                        Events
-                                    </a>
-                                </li>
-                                <li>
-                                    <Link href="/about" className={`${styles.footerLink} py-2 d-block`}>
-                                        About Us
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            
 
                     {/* Contact Section */}
                     <div className="col-md">
