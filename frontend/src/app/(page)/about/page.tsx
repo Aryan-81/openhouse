@@ -10,13 +10,13 @@ const students = [
   { name: "Aryan Sheel", role: "Technical", image: '/unknown.png'  },
   { name: "Raghav Jaiman", role: "Non-Technical", image: '/unknown.png'  },
   { name: "Vaishnavi", role: "Non-Technical", image: '/unknown.png'  },
+  { name: "Devesh Sharma", role: "Design", image: '/unknown.png'  },
   { name: "Aryan Raj", role: "Web-Dev", image: '/unknown.png'  },
+  { name: "Vibhu", role: "Infrastructure", image: '/unknown.png'  },
+  { name: "Vivek", role: "Infrastructure", image: '/unknown.png'  },
   { name: "Rahul Kumar", role: "Public Relations", image: '/unknown.png'  },
   { name: "Vishal Kumar", role: "Security", image: '/unknown.png'  },
   { name: "Yash Faujdar", role: "Coverage", image: '/unknown.png'  },
-  { name: "Devesh Sharma", role: "Design", image: '/unknown.png'  },
-  { name: "Vibhu", role: "Infrastructure", image: '/unknown.png'  },
-  { name: "Vivek", role: "Infrastructure", image: '/unknown.png'  },
 ];
 
 const faculty = [
