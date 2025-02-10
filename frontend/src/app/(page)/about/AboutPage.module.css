@@ -6,7 +6,7 @@
 .container {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 .5rem;
 }
 
 .intro {
@@ -108,7 +108,7 @@
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: .5rem;
   margin-top: 1rem;
 }
 
@@ -125,7 +125,8 @@
 }
 
 .teamCard {
-  min-width: 100px;
+  min-width: 80px;
+  width: 180px;
   aspect-ratio: 1;
   background-color: #ffffff;
   padding: .5rem;
