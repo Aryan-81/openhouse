@@ -31,7 +31,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023umt0191@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Lab 101", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "STEM Zone", 
     image: '/AI.png'
   },
@@ -44,7 +44,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023uee0138@iitjammu.ac.in", 
     Pre_Registered: false, 
     RStudent_Num: 50, 
-    Space_Location: "Tech Arena", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "STEM Zone", 
     image: '/robotics.png'
   },
@@ -57,7 +57,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2022ume0220@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 20, 
-    Space_Location: "Gallery Hall", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "STEM Zone", 
     image: '/tinkering.png'
   },
@@ -70,7 +70,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2022ucs0079@iitjammu.ac.in", 
     Pre_Registered: false, 
     RStudent_Num: 40, 
-    Space_Location: "Auditorium", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "STEM Zone", 
     image: '/ARVR.png'
   },
@@ -83,7 +83,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2022uee0130@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 60, 
-    Space_Location: "Expo Hall", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "STEM Zone", 
     image: '/drone.png'
   },
@@ -96,7 +96,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023ucs0115@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Lab 201", 
+    Space_Location: "Pushkar Classroom AC-20xx", 
     Category: "STEM Zone", 
     image: '/astro.png'
   },
@@ -109,7 +109,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2024ume0253@iitjammu.ac.in", 
     Pre_Registered: false, 
     RStudent_Num: 50, 
-    Space_Location: "Auditorium", 
+    Space_Location: "Pushkar Classroom AC-2022", 
     Category: "Arts Zone", 
     image: '/eloc.png'
   },
@@ -122,7 +122,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023umt0183@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Art Hall", 
+    Space_Location: "Pushkar Classroom AC-20xx", 
     Category: "Arts Zone", 
     image: '/paint.png'
   },
@@ -135,7 +135,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023uma0230@iitjammu.ac.in", 
     Pre_Registered: false, 
     RStudent_Num: 50, 
-    Space_Location: "Craft Studio", 
+    Space_Location: "Pushkar Classroom AC-20xx", 
     Category: "Arts Zone", 
     image: '/brs.png'
   },
@@ -148,7 +148,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023uce0057@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Seminar Hall", 
+    Space_Location: "Pushkar Classroom AC-2022", 
     Category: "Arts Zone", 
     image: '/iit.png'
   },
@@ -161,7 +161,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "2023umt0188@iitjammu.ac.in", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Science Expo Hall", 
+    Space_Location: "Parking 1 near Gomti Building", 
     Category: "Student Zone", 
     image: '/sci.png'
   },
@@ -174,7 +174,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Parking Area", 
+    Space_Location: "Pushkar Classroom AC-20xx", 
     Category: "STEM Zone", 
     image: '/atl.png'
   },
@@ -187,7 +187,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "-", 
+    Space_Location: "Parking 1 near Gomti Building", 
     Category: "Book Zone", 
     image: '/book.png'
   },
@@ -200,7 +200,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Research Pavilion", 
+    Space_Location: "Parking 2 - near Shiv Sagar building", 
     Category: "Science Zone", 
     image: '/itl.png'
   },
@@ -213,7 +213,7 @@ const sampleEvents: Event[] = [
     Contact_Email1: "", 
     Pre_Registered: true, 
     RStudent_Num: 30, 
-    Space_Location: "Innovation Hub", 
+    Space_Location: "Parking 1 near Gomti Building", 
     Category: "Innovation Zone", 
     image: '/cst.png'
   }
