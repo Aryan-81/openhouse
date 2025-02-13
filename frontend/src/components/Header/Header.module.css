@@ -37,19 +37,19 @@
 
 /* Brand Logo */
 .brand {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.3rem;
   text-decoration: none;
   color: white;
   display: flex;
   align-items: center;
+  font-family: 'Baron-Neue', sans-serif;
 }
 
 .brand img {
   width: 40px; 
   height: auto;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .logo{
   object-fit: cover; 
@@ -113,8 +113,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .brand {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1rem;
     text-decoration: none;
     
     color: white;
