@@ -24,7 +24,7 @@ interface Event {
 const sampleEvents: Event[] = [
   {
     Event_id: "1",
-    Event_Name: "AI Workshop",
+    Event_Name: "AI (Artificial Intelligence)",
     Event_des_short: "Hands-on AI learning",
     Event_des_long: "A hands-on exploration into the world of artificial intelligence. Participants will delve into machine learning models and real-world applications of AI.",
     Contact_Phone_number1: "8494086270",
