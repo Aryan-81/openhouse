@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Baron-Neue';
+  src: url('/fonts/Baron-Neue.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background-clr: #ffffff;
   --bk-ld:#f8f9fa;

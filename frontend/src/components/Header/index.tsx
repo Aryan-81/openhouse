@@ -22,7 +22,7 @@ const Header: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <Link href="/" className={styles.brand}>
-          <Image src="/logo.svg" alt="Logo" className={styles.logo} width={50} height={50} />
+          <Image src="/logo.png" alt="Logo" className={styles.logo} width={50} height={50} />
 
           PRAGYAAN
         </Link>
